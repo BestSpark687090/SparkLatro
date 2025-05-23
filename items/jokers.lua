@@ -94,9 +94,32 @@ SMODS.Joker{
         if context.end_of_round and context.cardarea == G.jokers then
             card.ability.extra.rounds = card.ability.extra.rounds - 1
             if card.ability.extra.rounds == 0 then
-                print("this is supposed to die")
-            end
-            if card.ability.extra.rounds < 0 then 
+                -- print("this is supposed to die")
+                for i = 1, #G.jokers.cards do
+                    if G.jokers.cards[i] == card then
+                        jok_id = i
+                    end
+                end
+                if jok_id ~= 1 then -- check if it isnt the first one in the jokers
+                    print("Is not the first Joker")
+                    G.jokers.cards[jok_id-1]:start_dissolve()
+                    G.jokers.cards[jok_id-1] = nil
+                end
+                if jok_id ~= #G.jokers.cards then -- check if it isnt the last joker
+                    print("Is not the last Joker")
+                    print(G.jokers.cards)
+                    G.jokers.cards[jok_id+1]:start_dissolve()
+                    G.jokers.cards[jok_id+1] = nil
+                end
+                -- then we remove us
+                G.jokers:remove_card(card)
+                card:remove()
+                card = nil
+                return {
+                    message="kaboom",
+                    colour=G.C.RED
+                }
+            elseif card.ability.extra.rounds < 0 then 
                 error("this isn't supposed to happen. caused by j_spl_duck_bomb") -- lets go that actually works
             end
         end
