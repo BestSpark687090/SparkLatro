@@ -11,12 +11,21 @@ return {
     -- c_perkeo = "Perkeo?"
     descriptions={
         Joker = {
+            j_SPL_draw_full = {
+                name="Draw Full",
+                text = {
+                    "Draw {C:attention}literally your entire deck{} into your hand.",
+                    "{X:chips,C:white}^2{} {C:chips}Chips{} and {X:mult,C:white}^2{} {C:mult}Mult{} if you play The Entire Deck.",
+                    "{C:inactive}Also, lets you select your entire deck.{}",
+                },
+            }
             j_SPL_duck_bomb = {
                 name="Duck with a Bomb",
                 text = {
                     "In {V:1}#1#{} rounds, {C:attention}destroy",
                     "this joker and {C:attention}the ",
                     "{C:attention}others around it",
+                    "{C:red,S:2}Can destroy {B:2,C:white}Eternal{C:red} Jokers",
                     "{s:0.5,C:inactive}Idea by Javapeoplebelike and tacovr123"
                 }
             },
@@ -51,6 +60,14 @@ return {
                 text={
                     "Copies ability of",
                     "{C:attention}Joker{} to the left"
+                }
+            }
+        },
+        Other = {
+            SPL_ideaby = {
+                name = "Joker idea by",
+                text = {
+                    "{s:#2#,E:1,C:inactive}#1#{}"
                 }
             }
         }

@@ -2,14 +2,6 @@ if SPL.config.jokers then
 -- Draw Full
 SMODS.Joker{
     key="draw_full",
-    loc_txt={
-        name="Draw Full",
-        text = {
-            "Draw {C:attention}literally your entire deck{} into your hand.",
-            "{X:chips,C:white}^2{} {C:chips}Chips{} and {X:mult,C:white}^2{} {C:mult}Mult{} if you play The Entire Deck.",
-            "{C:inactive}Also, lets you select your entire deck.{}",
-        }
-    },
     rarity = 3,
     atlas="spark",
     pos = { x = 0, y = 0 },
@@ -79,13 +71,15 @@ SMODS.Joker{
         }
     },
     loc_vars = function(self,info_queue,card)
+        info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "Javapeoplebelike and tacovr123",0.4 }}
         local dangerRound = G.C.TEXT_DARK
         if card.ability.extra.rounds == 1 then dangerRound = G.C.RED end
         return {
             vars = {
                 card.ability.extra.rounds,
                 colours = {
-                    dangerRound
+                    dangerRound,
+                    G.C.ETERNAL
                 }
             }
         }
@@ -138,6 +132,7 @@ SMODS.Joker{
     },
     atlas="jestersregret",
     loc_vars = function(self,info_queue,card)
+        info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "!TingTummyTrouble",0.5 }}
         return {
             vars = {
                 card.ability.extra.chips,
