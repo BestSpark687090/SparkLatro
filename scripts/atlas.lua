@@ -35,3 +35,15 @@ SMODS.Atlas{
     px=100,
     py=100
 }
+SMODS.Atlas{
+    key="jestersregret",
+    path="jimbosregret.png",
+    px=71,
+    py=95
+}
+SMODS.Atlas{
+    key="tnirpeulb",
+    path="tnirpeulb.png",
+    px=71,
+    py=95
+}

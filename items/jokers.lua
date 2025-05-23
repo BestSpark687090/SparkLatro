@@ -129,6 +129,137 @@ SMODS.Joker{
     key="jesters_regret",
     rarity=1,
     cost=2,
-    blueprint_compat = false
+    blueprint_compat = true,
+    config = {
+        extra = {
+            chips = 77,
+            mult = 77,
+        }
+    },
+    atlas="jestersregret",
+    loc_vars = function(self,info_queue,card)
+        return {
+            vars = {
+                card.ability.extra.chips,
+                card.ability.extra.mult
+            }
+        }
+    end,
+    calculate = function(self,card,context)
+        if context.joker_main then
+            return {
+                chips = card.ability.extra.chips,
+                mult = -card.ability.extra.mult
+            }
+        end
+    end
+}
+-- backwards blueprint (tnirpeulb)
+SMODS.Joker{
+    key="tnirpeulb",
+    rarity="SPL_rareplus",
+    -- rarity=3,
+    cost=5,
+    atlas="tnirpeulb",
+    pos={x=0,y=0},
+    blueprint_compat=true, -- thankfully it doesnt do inf retriggers ig
+    -- taken from cryptid, modified one character :P
+    update = function(self, card, front)
+		if G.STAGE == G.STAGES.RUN then
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] == card then
+					other_joker = G.jokers.cards[i - 1]
+				end
+			end
+            -- check compatibilities first for the reverseblueprint funnies
+            -- what if i just reverse it in general
+            -- if other_joker and other_joker.config.center.key == "j_SPL_tnirpeulb" and other_joker.config.center.blueprint_compat ~= true then
+            --     card.ability.blueprint_compat_ui = " elbitapmocni "
+            -- elseif other_joker and other_joker.config.center.key == "j_SPL_tnirpeulb" then
+            --     -- Special if you're tnirpeulbing a tnirpeulb
+            --     card.ability.blueprint_compat_ui = " elbitapmoc "
+			if other_joker and other_joker ~= card and other_joker.config.center.blueprint_compat then
+				card.ability.blueprint_compat_ui = " elbitapmoc "
+                card.ability.blueprint_compat = "compatible"
+            else
+                card.ability.blueprint_compat = "incompatible"
+				card.ability.blueprint_compat_ui = " elbitapmocni "
+			end
+		end
+	end,
+    -- same with this, but removed the vars since it doesnt need any
+    loc_vars = function(self, info_queue, card)
+		card.ability.blueprint_compat_ui = card.ability.blueprint_compat_ui
+		card.ability.blueprint_compat_check = nil
+		return {
+			main_end = (card.area and card.area == G.jokers) and {
+				{
+					n = G.UIT.C,
+					config = { align = "bm", minh = 0.4 },
+					nodes = {
+						{
+							n = G.UIT.C,
+							config = {
+								ref_table = card,
+								align = "m",
+								--colour = HEX("B43D6D"), -- this took me a moment but i got the hex code of the exact inversion of G.C.GREEN
+                                -- never mind it sets it back to green if i move it :(
+                                colour = G.C.GREEN,
+								r = 0.05,
+								padding = 0.06,
+								func = "blueprint_compat",
+							},
+							nodes = {
+								{
+									n = G.UIT.T,
+									config = {
+										ref_table = card.ability,
+										ref_value = "blueprint_compat_ui",
+										colour = G.C.UI.TEXT_LIGHT,
+										scale = 0.32 * 0.8,
+									},
+								},
+							},
+						},
+					},
+				},
+			} or nil,
+		}
+	end,
+    calculate = function(self,card,context)
+        local other_joker = nil
+		for i = 1, #G.jokers.cards do
+			if G.jokers.cards[i] == card then
+				other_joker = G.jokers.cards[i - 1]
+			end
+		end
+		if other_joker and other_joker ~= card then
+			context.blueprint = (context.blueprint and (context.blueprint + 1)) or 1
+			context.blueprint_card = context.blueprint_card or card
+
+			if context.blueprint > #G.jokers.cards + 1 then
+				return
+			end
+
+			local other_joker_ret, trig = other_joker:calculate_joker(context)
+			local eff_card = context.blueprint_card or card
+
+			context.blueprint = nil
+			context.blueprint_card = nil
+
+			if other_joker_ret == true then
+				return other_joker_ret
+			end
+			if other_joker_ret or trig then
+				if not other_joker_ret then
+					other_joker_ret = {}
+				end
+				other_joker_ret.card = eff_card
+				other_joker_ret.colour = darken(G.C.BLUE, 0.3)
+				other_joker_ret.no_callback = true
+				return other_joker_ret
+			end
+		end
+    end,
 }
 end

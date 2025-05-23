@@ -2,6 +2,8 @@
 version = "1.0.0"
 dump_lua = true
 priority = -1
+# stolen from cryptid mod.
+# cryptid is a good starting place :)
 [[patches]]
 [patches.pattern]
 target = "functions/button_callbacks.lua"

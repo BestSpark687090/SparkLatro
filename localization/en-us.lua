@@ -1,7 +1,10 @@
 return {
     misc = {
-        challenge_names = {
-            c_perkeo = "The J"
+        dictionary = {
+            k_spl_rareplus = "Rare+",
+        },
+        labels = {
+            k_spl_rareplus = "Rare+",
         }
     },
     -- c_entireity = "Entire Deck Thingy",
@@ -18,10 +21,11 @@ return {
                 }
             },
             j_SPL_jesters_regret = {
-                name="Jester's Regret",
+                name="Jimbo's Regret",
                 text={
-                    "{C:chips}+77 Chips{}, {C:mult}-77 Mult{}",
-                    "{s:0.7,C:inactive}\"He laughed... then cried.\"",
+                    "{C:chips}+#1# Chips{}, {C:mult}-#2# Mult{}",
+                    "{s:1.1,C:inactive}\"He laughed... then cried.\"",
+                    "{C:inactive,s:0.7}(You... probably shouldn't take this.)",
                     "{s:0.5,C:inactive}Idea by !TingTummyTrouble"
                 }
             },
@@ -41,7 +45,14 @@ return {
                     "{C:inactive}(Currently #1# Mult)",
                     "{s:0.5,C:inactive}Idea by !TingTummyTrouble"
                 }
+            },
+            j_SPL_tnirpeulb = {
+                name = "Tnirpeulb",
+                text={
+                    "Copies ability of",
+                    "{C:attention}Joker{} to the left"
+                }
             }
         }
-    }
+    },
 }
