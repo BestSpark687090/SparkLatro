@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 SMODS.Atlas{
     key="duckbomb",
     path="duckbomb.png",
@@ -34,4 +35,42 @@ SMODS.Atlas{
     path="achieve.png",
     px=100,
     py=100
+=======
+SMODS.Atlas{
+    key="duckbomb",
+    path="duckbomb.png",
+    px=71,
+    py=95
+}
+SMODS.Atlas{
+    key="spark",
+    path="spark.png",
+    px=64,
+    py=64,
+    center= 10,
+}
+SMODS.Atlas{
+    key="modicon",
+    path="spark.png",
+    px=64,
+    py=64,
+}:register()
+SMODS.Atlas{
+    key="skull",
+    path="skull.png",
+    px=32,
+    py=32,
+}
+SMODS.Atlas{
+    key="theentiredeck",
+    path="theentiredeck.png",
+    px=71,
+    py=95
+}
+SMODS.Atlas{
+    key="achieve",
+    path="achieve.png",
+    px=100,
+    py=100
+>>>>>>> origin/main
 }
