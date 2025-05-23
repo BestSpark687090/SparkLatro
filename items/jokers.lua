@@ -89,6 +89,23 @@ SMODS.Joker{
                 }
             }
         }
+    end,
+    calculate = function(self,card,context)
+        if context.end_of_round and context.cardarea == G.jokers then
+            card.ability.extra.rounds = card.ability.extra.rounds - 1
+            if card.ability.extra.rounds == 0 then
+                print("this is supposed to die")
+            end
+            if card.ability.extra.rounds < 0 then 
+                error("this isn't supposed to happen. caused by j_spl_duck_bomb") -- lets go that actually works
+            end
+        end
     end
+}
+SMODS.Joker{
+    key="jesters_regret",
+    rarity=1,
+    cost=2,
+    blueprint_compat = false
 }
 end
