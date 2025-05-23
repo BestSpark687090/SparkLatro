@@ -1,0 +1,11 @@
+{
+    "id":"SparkLatro",
+    "author":["BestSpark687090"],
+    "name":"SparkLatro",
+    "description": "I have no clue.",
+    "badge_color":"#ff0000",
+    "badge_text_color":"#0000ff",
+    "prefix":"SPL",
+    "version":"1.0.0",
+    "main_file":"main.lua"
+}
