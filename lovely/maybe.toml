@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [manifest]
 version = "1.0.0"
 dump_lua = true
@@ -44,51 +43,4 @@ match_indent=true
 position="at"
 payload="{n=G.UIT.T, config={text = v, scale = args.info_scale, colour = G.C.UI.TEXT_LIGHT}}" 
 #... this worked first try again.
-=======
-[manifest]
-version = "1.0.0"
-dump_lua = true
-priority = -1
-[[patches]]
-[patches.pattern]
-target = "functions/button_callbacks.lua"
-pattern = "if #G.hand.highlighted <= 0 or G.GAME.blind.block_play or #G.hand.highlighted > 5 then "
-position = "at"
-payload = "if #G.hand.highlighted <= 0 or G.GAME.blind.block_play or #G.hand.highlighted > G.hand.config.highlighted_limit then "
-match_indent = true
-times = 1
-[[patches]]
-# Stretches the Balatro Logo. Why? Because i can.
-[patches.pattern]
-target="game.lua"
-pattern="13*SC_scale,"
-match_indent=true
-position="at"
-payload="20*SC_scale,"
-# I CANT BELIEVE THIS ACTUALLY WORKED
-# This modifies the tooltip section to add the seals in. Let's GOOOOOOO
-[[patches]]
-[patches.pattern]
-target="functions/misc_functions.lua"
-pattern='detailed_tooltip = part.control.T and (G.P_CENTERS[part.control.T] or G.P_TAGS[part.control.T]) or nil,'
-match_indent=true
-position="at"
-payload="detailed_tooltip = part.control.T and (G.P_CENTERS[part.control.T] or G.P_TAGS[part.control.T] or G.P_SEALS[part.control.T]) or nil,"
-# create_toggle info Label scaling. It's stuck at 0.25 and i dont like that :(
-[[patches]]
-[patches.pattern]
-target="functions/UI_definitions.lua"
-pattern="args.ref_value = args.ref_value or 'test'"
-match_indent=true
-position="after"
-payload="args.info_scale = args.info_scale or 0.25"
-[[patches]]
-[patches.pattern]
-target="functions/UI_definitions.lua"
-pattern="{n=G.UIT.T, config={text = v, scale = 0.25, colour = G.C.UI.TEXT_LIGHT}}"
-match_indent=true
-position="at"
-payload="{n=G.UIT.T, config={text = v, scale = args.info_scale, colour = G.C.UI.TEXT_LIGHT}}" 
-#... this worked first try again.
->>>>>>> origin/main
 # i have no clue how i'm doing this but i am!
