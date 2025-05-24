@@ -2,6 +2,7 @@ return {
     misc = {
         dictionary = {
             k_spl_rareplus = "Rare+",
+            k_rankup_ex = "Rank Up!"
         },
         labels = {
             k_spl_rareplus = "Rare+",
@@ -60,6 +61,20 @@ return {
                 text={
                     "Copies ability of",
                     "{C:attention}Joker{} to the left"
+                }
+            },
+            j_SPL_mrotsniarb = {
+                name = "Mrotsniarb",
+                text = {
+                    "Copies the ability",
+                    "of rightmost {C:attention}Joker{}"
+                }
+            },
+            j_SPL_chutesandladders = {
+                name = "Chutes and Ladders",
+                text = {
+                    "Increases the rank",
+                    "of all {C:attention}scored and unscored cards{}"
                 }
             }
         },

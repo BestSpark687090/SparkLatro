@@ -1,3 +1,4 @@
+
 return { n= G.UIT.ROOT, config = {r=0.1,minw=10,align="cm",padding=0.5,colour=G.C.BLACK}, nodes = {
         {
             n=G.UIT.C,
@@ -49,6 +50,27 @@ return { n= G.UIT.ROOT, config = {r=0.1,minw=10,align="cm",padding=0.5,colour=G.
                     ref_value="jokers",
                     info={"Enable or disable SparkLatro's Jokers"},
                     info_scale=0.4
+                }),
+                create_toggle({
+                    label="Show Tooltips",
+                    ref_table=SparkLatro.ModID.config,
+                    ref_value="show_tooltips",
+                    info={"Enable or Disable SparkLatro's tooltips"},
+                    info_scale = 0.4,
+                }),
+                create_option_cycle({
+                    options = {"Page 1", "Page 2"},
+                    scale = 0.8,
+                    ref_table=SparkLatro,
+                    cycle_shoulders = true,
+                    opt_callback = 'test',
+                    -- current_option = 1,
+                    -- colour = G.C.RED,
+                    no_pips = true,
+                    focus_args = {
+                        snap_to = true,
+                        nav = 'wide'
+                    }
                 })
             }}
         }

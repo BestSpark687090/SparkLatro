@@ -119,6 +119,7 @@ SMODS.Joker{
         end
     end
 }
+-- Jester's Regret
 SMODS.Joker{
     key="jesters_regret",
     rarity=1,
@@ -166,13 +167,6 @@ SMODS.Joker{
 					other_joker = G.jokers.cards[i - 1]
 				end
 			end
-            -- check compatibilities first for the reverseblueprint funnies
-            -- what if i just reverse it in general
-            -- if other_joker and other_joker.config.center.key == "j_SPL_tnirpeulb" and other_joker.config.center.blueprint_compat ~= true then
-            --     card.ability.blueprint_compat_ui = " elbitapmocni "
-            -- elseif other_joker and other_joker.config.center.key == "j_SPL_tnirpeulb" then
-            --     -- Special if you're tnirpeulbing a tnirpeulb
-            --     card.ability.blueprint_compat_ui = " elbitapmoc "
 			if other_joker and other_joker ~= card and other_joker.config.center.blueprint_compat then
 				card.ability.blueprint_compat_ui = " elbitapmoc "
                 card.ability.blueprint_compat = "compatible"
@@ -259,5 +253,109 @@ SMODS.Joker{
 			end
 		end
     end,
+}
+-- Reverse Brainstorm (Mrotsniarb)
+SMODS.Joker{
+    key="mrotsniarb",
+    rarity="SPL_rareplus",
+    cost=5,
+    blueprint_compat=true,
+    atlas="mrotsniarb",
+    pos = {x=0,y=0},
+    update = function(self, card, front)
+		if G.STAGE == G.STAGES.RUN then
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] == card then
+					other_joker = G.jokers.cards[#G.jokers.cards]
+				end
+			end
+			if other_joker and other_joker ~= card and other_joker.config.center.blueprint_compat then
+				card.ability.blueprint_compat_ui = " elbitapmoc "
+                card.ability.blueprint_compat = "compatible"
+            else
+                card.ability.blueprint_compat = "incompatible"
+				card.ability.blueprint_compat_ui = " elbitapmocni "
+			end
+		end
+	end,
+    loc_vars = function(self, info_queue, card)
+        if card.area and card.area ~= G.jokers then
+            info_queue[#info_queue+1] = {generate_ui = generate_tooltip, key = 'rareplus', set="rarity", colour = G.C.RARITY.rarePlus, hasBGColour = true, text_colour = G.C.WHITE}
+        end
+		card.ability.blueprint_compat_ui = card.ability.blueprint_compat_ui
+		card.ability.blueprint_compat_check = nil
+		return {
+			main_end = (card.area and card.area == G.jokers) and {
+				{
+					n = G.UIT.C,
+					config = { align = "bm", minh = 0.4 },
+					nodes = {
+						{
+							n = G.UIT.C,
+							config = {
+								ref_table = card,
+								align = "m",
+								--colour = HEX("B43D6D"), -- this took me a moment but i got the hex code of the exact inversion of G.C.GREEN
+                                -- never mind it sets it back to green if i move it :(
+                                colour = G.C.GREEN,
+								r = 0.05,
+								padding = 0.06,
+								func = "blueprint_compat",
+							},
+							nodes = {
+								{
+									n = G.UIT.T,
+									config = {
+										ref_table = card.ability,
+										ref_value = "blueprint_compat_ui",
+										colour = G.C.UI.TEXT_LIGHT,
+										scale = 0.32 * 0.8,
+									},
+								},
+							},
+						},
+					},
+				},
+			} or nil,
+		}
+	end,
+}
+--Chutes and Ladders
+SMODS.Joker{
+    key="chutesandladders",
+    rarity = 2,
+    cost = 5,
+    atlas="chutesandladders",
+    pos = {x=0,y=0},
+    loc_vars = function(self,info_queue,card)
+        info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "Brodizzle",0.5 }}
+    end,
+    calculate = function(self,card,context)
+        if context.before and context.cardarea == G.jokers then
+	        for i=1, #G.play.cards do
+                G.E_MANAGER:add_event(Event({trigger="after",delay=0.3,func = function()
+                    local _card = G.play.cards[i]
+                    _card:flip()
+                return true end}))
+                -- This took me forever to figure out. I finally did it! :Yippee:
+                G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.3,func = function()
+                    local _card = G.play.cards[i]
+                    beforeNominal = _card.base.nominal
+                    local success, err = SMODS.modify_rank(_card, 1)
+                    assert(success, "Failed to change card rank: " .. (err or "unknown error"))
+                    afterNominal = _card.base.nominal
+					_card:juice_up(0.5, 0.5)
+					play_sound('tarot1')
+                return true end }))
+                G.E_MANAGER:add_event(Event({trigger="after",delay=0.3,func = function()
+                    local _card = G.play.cards[i]
+                    _card:flip()
+                return true end}))
+            end
+            return {
+                message = localize("k_rankup_ex")
+            }
+	    end
+    end
 }
 end

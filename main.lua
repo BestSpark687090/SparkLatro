@@ -3,6 +3,15 @@ if not SparkLatro then
 end
 SparkLatro.ModID = SMODS.current_mod
 SPL = SMODS.current_mod
+SparkLatro.opt_callback = "updateDatUI"
+G.FUNCS['updateDatUI'] = function(h,h1,h2,h3,h4)
+    print("hello! here is the stuff:")
+    print(h)
+	print(h1)
+	print(h2)
+	print(h3)
+	print(h4)
+end
 SPL.save_config = function(self)
     SMODS.save_mod_config(self)
 end
