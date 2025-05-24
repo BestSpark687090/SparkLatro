@@ -3,25 +3,6 @@ if not SparkLatro then
 end
 SparkLatro.ModID = SMODS.current_mod
 SPL = SMODS.current_mod
-G.FUNCS['updateDatUI'] = function(h)
-    print("hello! here is the stuff:")
-    print(h.cycle_config)
-	local my_menu_uibox = SPL.config_file(h.from_val)
-	-- Get the parent of the menu UIBox, because we want to delete and re-create the menu:
-	-- print(my_menu_uibox)
-	-- local menu_wrap = my_menu_uibox
-	
-	-- -- Delete the current menu UIBox:
-	-- menu_wrap.config.object:remove()
-	-- -- Create the new menu UIBox:
-	-- menu_wrap.config.object = UIBox({
-	-- 	definition = my_menu_function(h.config.my_data),
-	-- 	config = {parent = menu_wrap, type = "cm"} -- You MUST specify parent!
-	-- })
-	-- -- Update the UI:
-	-- menu_wrap.UIBox:recalculate()
-	SPL.config_tab = SPL.config_file(h.to_val)
-end
 SPL.save_config = function(self)
     SMODS.save_mod_config(self)
 end

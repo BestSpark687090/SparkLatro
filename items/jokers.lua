@@ -71,7 +71,9 @@ SMODS.Joker{
         }
     },
     loc_vars = function(self,info_queue,card)
-        info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "Javapeoplebelike and tacovr123",0.7 }}
+        if SPL.config.show_tooltips then
+            info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "Javapeoplebelike and tacovr123",0.7 }}
+        end
         local dangerRound = G.C.TEXT_DARK
         if card.ability.extra.rounds == 1 then dangerRound = G.C.RED end
         return {
@@ -133,7 +135,9 @@ SMODS.Joker{
     },
     atlas="jestersregret",
     loc_vars = function(self,info_queue,card)
-        info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "!TingTummyTrouble",0.5 }}
+        if SPL.config.show_tooltips then
+            info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "!TingTummyTrouble",0.5 }}
+        end
         return {
             vars = {
                 card.ability.extra.chips,
@@ -178,7 +182,7 @@ SMODS.Joker{
 	end,
     -- same with this, but removed the vars since it doesnt need any
     loc_vars = function(self, info_queue, card)
-        if card.area and card.area ~= G.jokers then
+        if card.area and card.area ~= G.jokers and SPL.config.show_tooltips then
             info_queue[#info_queue+1] = {generate_ui = generate_tooltip, key = 'rareplus', set="rarity", colour = G.C.RARITY.rarePlus, hasBGColour = true, text_colour = G.C.WHITE}
         end
 		card.ability.blueprint_compat_ui = card.ability.blueprint_compat_ui
@@ -279,7 +283,7 @@ SMODS.Joker{
 		end
 	end,
     loc_vars = function(self, info_queue, card)
-        if card.area and card.area ~= G.jokers then
+        if card.area and card.area ~= G.jokers and SPL.config.show_tooltips then
             info_queue[#info_queue+1] = {generate_ui = generate_tooltip, key = 'rareplus', set="rarity", colour = G.C.RARITY.rarePlus, hasBGColour = true, text_colour = G.C.WHITE}
         end
 		card.ability.blueprint_compat_ui = card.ability.blueprint_compat_ui
@@ -319,6 +323,41 @@ SMODS.Joker{
 			} or nil,
 		}
 	end,
+    calculate = function(self,card,context)
+        local other_joker = nil
+		for i = 1, #G.jokers.cards do
+			if G.jokers.cards[i] == card then
+				other_joker = G.jokers.cards[#G.jokers.cards]
+			end
+		end
+		if other_joker and other_joker ~= card then
+			context.blueprint = (context.blueprint and (context.blueprint + 1)) or 1
+			context.blueprint_card = context.blueprint_card or card
+
+			if context.blueprint > #G.jokers.cards + 1 then
+				return
+			end
+
+			local other_joker_ret, trig = other_joker:calculate_joker(context)
+			local eff_card = context.blueprint_card or card
+
+			context.blueprint = nil
+			context.blueprint_card = nil
+
+			if other_joker_ret == true then
+				return other_joker_ret
+			end
+			if other_joker_ret or trig then
+				if not other_joker_ret then
+					other_joker_ret = {}
+				end
+				other_joker_ret.card = eff_card
+				other_joker_ret.colour = darken(G.C.BLUE, 0.3)
+				other_joker_ret.no_callback = true
+				return other_joker_ret
+			end
+		end
+    end,
 }
 --Chutes and Ladders
 SMODS.Joker{
@@ -326,9 +365,12 @@ SMODS.Joker{
     rarity = 2,
     cost = 5,
     atlas="chutesandladders",
+    blueprint_compat = true,
     pos = {x=0,y=0},
     loc_vars = function(self,info_queue,card)
-        info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "Brodizzle",0.5 }}
+        if SPL.config.show_tooltips then
+            info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "Brodizzle",0.5 }}
+        end
     end,
     calculate = function(self,card,context)
         if context.before and context.cardarea == G.jokers then
