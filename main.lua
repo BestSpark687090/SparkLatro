@@ -33,3 +33,5 @@ end
 SPL.config_file = SMODS.load_file('configtab.lua')
 SPL.config_tab = SPL.config_file
 G.C.RARITY.rarePlus = HEX("9C2010")
+-- Talisman Support (I'm probably gonna make that a requirement)
+to_big = to_big or function(x) return x end

@@ -18,21 +18,17 @@ SMODS.Consumable{
         end
         return {
 			vars = {
-                "The Entire Deck",
-				entiredeck,
-				colours = { planetcolourone },
+				localize("k_spl_hand_entire_deck"),
+				G.GAME.hands["SPL_The Entire Deck"].level,
+				G.GAME.hands["SPL_The Entire Deck"].l_mult,
+				G.GAME.hands["SPL_The Entire Deck"].l_chips,
+				colours = { 
+					to_big(G.GAME.hands["SPL_The Entire Deck"].level) == to_big(1) and G.C.UI.TEXT_DARK
+					or G.C.HAND_LEVELS[to_big(math.min(7, G.GAME.hands["SPL_The Entire Deck"].level)):to_number()] 
+				},
 			},
 		}
     end,
-    loc_txt = {
-        name="The Entire Deck, but as a Planet for some reason",
-        text={
-            "(lvl.1) Level up",
-            "{C:attention}#1#{}",
-            "{C:mult}5.252e18{} Mult and",
-            "{C:chips}5.252e18{} Chips"
-        }
-    },
     use = function(self, card, area, copier)
 		suit_level_up(self, card, area, copier)
 	end,

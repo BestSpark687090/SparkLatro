@@ -3,12 +3,9 @@ return {
         dictionary = {
             k_spl_rareplus = "Rare+",
             k_rankup_ex = "Rank Up!",
-            k_spl_watermelon = "Watermelon"
+            k_spl_watermelon = "Watermelon",
+            k_spl_hand_entire_deck = "The Entire Deck"
         },
-        -- labels = {
-        --     k_spl_rareplus = "Rare+",
-        --     k_spl_watermelon = "Watermelon"
-        -- }
     },
     -- c_entireity = "Entire Deck Thingy",
     -- c_perkeo = "Perkeo?"
@@ -93,6 +90,17 @@ return {
                 name = "{V:1,E:1}Ducky{}",
                 text = {
                     "It's the Ducky!!"
+                }
+            }
+        },
+        Planet = {
+            c_SPL_theentiredeck = {
+                name="The Entire Deck, but as a Planet for some reason",
+                text={
+                    "(lvl.#2#) Level up",
+                    "{C:attention}#1#{}",
+                    "{C:mult}#3#{} Mult and",
+                    "{C:chips}#4#{} Chips"
                 }
             }
         },
