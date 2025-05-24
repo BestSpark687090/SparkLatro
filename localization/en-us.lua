@@ -5,10 +5,10 @@ return {
             k_rankup_ex = "Rank Up!",
             k_spl_watermelon = "Watermelon"
         },
-        labels = {
-            k_spl_rareplus = "Rare+",
-            k_spl_watermelon = "Watermelon"
-        }
+        -- labels = {
+        --     k_spl_rareplus = "Rare+",
+        --     k_spl_watermelon = "Watermelon"
+        -- }
     },
     -- c_entireity = "Entire Deck Thingy",
     -- c_perkeo = "Perkeo?"
@@ -88,6 +88,12 @@ return {
                     "{C:inactive}and also x100 Chips and Mult.)",
                     "{s:0.5,C:inactive}Why that much? Because why not!!"
                 }
+            },
+            j_SPL_ducky = {
+                name = "{V:1,E:1}Ducky{}",
+                text = {
+                    "It's the Ducky!!"
+                }
             }
         },
         Other = {
@@ -100,19 +106,33 @@ return {
             SPL_watermelon_reactor_lore = {
                 name = "Watermelon Reactor Lore",
                 text = {
-                    "To start, Watermelon Reactor is a Discord bot I made",
-                    "which reacts with the watermelon emoji to every message sent.",
-                    "Seems weird, but there's a reason. It's used to see who has read",
-                    "the message, and who has not. This came from a friend's server of",
-                    "mine, where they were doing it manually. I came along and decided",
-                    "to make a Discord bot for them, so they can react faster than they",
-                    "could without the bot."
+                    "To start, Watermelon Reactor is a",
+                    "Discord bot I made which reacts",
+                    "with the watermelon emoji to every",
+                    "message sent. Seems weird, but there's",
+                    "a reason. It's used to see",
+                    "who has read the message, and",
+                    "who has not. This came from",
+                    "a friend's server of mine, where",
+                    "they were doing it manually. I",
+                    "came along and decided to make",
+                    "a Discord bot for them, so",
+                    "they can react faster than they",
+                    "could without the bot.",
                 }
             },
             SPL_watermelon_reactor_bot_link = {
                 name = "Link to the Watermelon Reactor top.gg site",
                 text = {
                     "https://top.gg/bot/1228469171826987040"
+                }
+            },
+            SPL_draw_full_placeholder = {
+                name = "Technically a Placeholder",
+                text = {
+                    "Technically, this entire joker is a",
+                    "placeholder. It was just for testing,",
+                    "but I decided to keep it in here anyways."
                 }
             }
         },

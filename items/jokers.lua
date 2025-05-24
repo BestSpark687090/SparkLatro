@@ -8,7 +8,10 @@ SMODS.Joker{
     config = {extra = 52, other = {chips_exp = 2,mult_exp = 2}},
     center = {config = {extra = 52},},
     cost = 52,
-    loc_vars = function(self, info_queue)
+    loc_vars = function(self, info_queue, card)
+        if card.area and card.area ~= G.jokers and SPL.config.show_tooltips then
+            info_queue[#info_queue+1] = {key = "SPL_draw_full_placeholder", set="Other"}
+        end
 		return { vars = {self.config.chips_exp, self.config.mult_exp } }
 	end,
     calculate = function(self, card, context)
@@ -27,6 +30,7 @@ SMODS.Joker{
         if context.joker_main then
             if playedEntireDeck then
                 playedEntireDeck = false
+                SparkLatro.played_entire_deck = true
                 -- context.mult = context.mult ^ self.config.mult_exp
                 -- context.chips = context.chips ^ self.config.chips_exp
                 self.config.chips_exp = 2
@@ -432,6 +436,23 @@ SMODS.Joker{
                 x_chips = 100,
             }
         end
+    end
+}
+SMODS.Joker{
+    key="ducky",
+    rarity=4, -- The Legendary Ducky is here!,
+    cost=10,
+    atlas="ducky",
+    pos = {x=0,y=0},
+    soul_pos = {x=1,y=0},
+    loc_vars = function(self,info_queue,card)
+        return {
+            vars = {
+                colours = {
+                    HEX("FFD800")
+                }
+            }
+        }
     end
 }
 end

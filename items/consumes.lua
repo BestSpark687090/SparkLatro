@@ -7,6 +7,9 @@ SMODS.Consumable{
     can_use = function(self, card) -- this is important i think
 		return true
 	end,
+	in_pool = function(self,args)
+		return SparkLatro.played_entire_deck
+	end,
     loc_vars =function(self,info_queue,center)
         local entiredeck = G.GAME.hands["SPL_The Entire Deck"].level or 1
         local color = G.C.HAND_LEVELS[math.min(entiredeck, 7)]
