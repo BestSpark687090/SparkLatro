@@ -8,7 +8,7 @@ SMODS.Consumable{
 		return true
 	end,
 	in_pool = function(self,args)
-		return SparkLatro.played_entire_deck
+		return G.GAME.played_entire_deck or false
 	end,
     loc_vars =function(self,info_queue,center)
         local entiredeck = G.GAME.hands["SPL_The Entire Deck"].level or 1

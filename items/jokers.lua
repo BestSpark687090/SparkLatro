@@ -30,7 +30,7 @@ SMODS.Joker{
         if context.joker_main then
             if playedEntireDeck then
                 playedEntireDeck = false
-                SparkLatro.played_entire_deck = true
+                G.GAME.played_entire_deck = true
                 -- context.mult = context.mult ^ self.config.mult_exp
                 -- context.chips = context.chips ^ self.config.chips_exp
                 self.config.chips_exp = 2
