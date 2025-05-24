@@ -59,3 +59,9 @@ SMODS.Atlas{
     px=71,
     py=95
 }
+SMODS.Atlas{
+    key="watermelonreactor",
+    path="watermelon_reactor.png",
+    px=71,
+    py=95
+}

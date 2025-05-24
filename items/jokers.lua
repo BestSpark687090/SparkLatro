@@ -400,4 +400,38 @@ SMODS.Joker{
 	    end
     end
 }
+SMODS.Joker{
+    key="watermelonreactor",
+    rarity="SPL_watermelon",
+    cost=0,
+    atlas="watermelonreactor",
+    pos={x=0,y=0},
+    display_size = { w = 71, h = 71 },
+    pixel_size = {w=71,h=71},
+    loc_vars = function(self,info_queue,card)
+        if card.area and card.area ~= G.jokers and SPL.config.show_tooltips then
+            info_queue[#info_queue+1] = {key = 'SPL_watermelon_reactor_lore', set = 'Other'}
+            info_queue[#info_queue+1] = {key = 'SPL_watermelon_reactor_bot_link', set = 'Other'}
+        end
+        return {
+            vars = {
+                colours = {
+                    G.C.RED
+                }
+            }
+        }
+    end,
+    calculate = function(self,card,context)
+        if context.joker_main then 
+            return {
+                message = "🍉",
+                colour = HEX('00ff00'),
+                mult = 100,
+                chips = 100,
+                x_mult = 100,
+                x_chips = 100,
+            }
+        end
+    end
+}
 end
