@@ -18,7 +18,7 @@ return {
                     "{X:chips,C:white}^2{} {C:chips}Chips{} and {X:mult,C:white}^2{} {C:mult}Mult{} if you play The Entire Deck.",
                     "{C:inactive}Also, lets you select your entire deck.{}",
                 },
-            }
+            },
             j_SPL_duck_bomb = {
                 name="Duck with a Bomb",
                 text = {
@@ -68,6 +68,18 @@ return {
                 name = "Joker idea by",
                 text = {
                     "{s:#2#,E:1,C:inactive}#1#{}"
+                }
+            },
+        },
+        rarity = {
+            rareplus = {
+                name = "Rare+",
+                text = {
+                    "Rare+ is a rarity above Rare",
+                    "implemented by SparkLatro.",
+                    "They might be better than the",
+                    "normal Rare jokers, but you ",
+                    "gotta figure that out yourself!"
                 }
             }
         }

@@ -71,7 +71,7 @@ SMODS.Joker{
         }
     },
     loc_vars = function(self,info_queue,card)
-        info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "Javapeoplebelike and tacovr123",0.4 }}
+        info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "Javapeoplebelike and tacovr123",0.7 }}
         local dangerRound = G.C.TEXT_DARK
         if card.ability.extra.rounds == 1 then dangerRound = G.C.RED end
         return {
@@ -184,6 +184,9 @@ SMODS.Joker{
 	end,
     -- same with this, but removed the vars since it doesnt need any
     loc_vars = function(self, info_queue, card)
+        if card.area and card.area ~= G.jokers then
+            info_queue[#info_queue+1] = {generate_ui = generate_tooltip, key = 'rareplus', set="rarity", colour = G.C.RARITY.rarePlus, hasBGColour = true, text_colour = G.C.WHITE}
+        end
 		card.ability.blueprint_compat_ui = card.ability.blueprint_compat_ui
 		card.ability.blueprint_compat_check = nil
 		return {

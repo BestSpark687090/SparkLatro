@@ -14,4 +14,11 @@ if SPL.config.keybinds then
             SMODS.restart_game()
         end
     }
+    SMODS.Keybind{
+        key="Crash Game",
+        key_pressed="c",
+        action = function(self)
+            error("Manually generated crash")
+        end
+    }
 end

@@ -31,4 +31,5 @@ for _, file in ipairs(files) do
     f()
 end
 SPL.config_tab = SMODS.load_file('configtab.lua')
+G.C.RARITY.rarePlus = HEX("9C2010")
 -- init_localization()
