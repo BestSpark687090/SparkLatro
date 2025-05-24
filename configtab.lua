@@ -1,18 +1,21 @@
-
-return { n= G.UIT.ROOT, config = {r=0.1,minw=10,align="cm",padding=0.5,colour=G.C.BLACK}, nodes = {
-        {
+function returnAMenu(menu_name)
+    if menu_name == nil or menu_name == "Page 1" then
+        return { n= G.UIT.ROOT, config = {r=0.1,align="cm",padding=0.5,colour=G.C.BLACK}, nodes = {{
             n=G.UIT.C,
             config={
                 align="cm",
                 padding=0.1,
-                colour=G.C.BLACK
+                colour=G.C.BLACK,
             },
             nodes = {
+                -- SparkLatro Config Label
                 {n=G.UIT.R,config={colour=G.C.RED,minw=10,r=0,minh=0.75,align="cm"},nodes={
                     {n=G.UIT.T, config = {text="SparkLatro Config",scale="0.5",colour=G.C.WHITE,juice=true,align="cm"}},
                 }},
                 -- im gonna make label scaling gimme a min :P
                 -- so i did it i hope it works
+                -- Remove the color once you're done
+                {n=G.UIT.R,config={align="cm"},nodes={
                 create_toggle({
                     label="Keybinds",
                     ref_table=SparkLatro.ModID.config,
@@ -21,14 +24,18 @@ return { n= G.UIT.ROOT, config = {r=0.1,minw=10,align="cm",padding=0.5,colour=G.
                     info={"S : funny sound","CTRL+Shift+R: Restart game"},
                     info_scale=0.35
                 }),
-                {n=G.UIT.R,config={minw=10,r=0,minh=0.25,align="tm"}}, -- break in line to make it seem cool i guess
-                {n=G.UIT.R,config={minw=10,r=0,minh=0.75,align="cm"},nodes={
-                    {n=G.UIT.T, config = {text="Game Stuff",scale=0.4,colour=G.C.WHITE,juice=true,align="tm"}},
                 }},
-                {n=G.UIT.R,config={minw=10,r=0,minh=0.25,align="tm"},nodes={
-                    {n=G.UIT.T, config = {text="For if you actually want to modify this stuff. Why though?",scale=0.4,colour=G.C.WHITE,juice=true,align="tm"}},
+                -- {n=G.UIT.R,config={minw=10,r=0,minh=0.25,align="cm"}}, -- break in line to make it seem cool i guess
+                -- The goofies start Here
+                {n=G.UIT.C,config={minw=0.5,r=0,minh=0,align="cm",colour=G.C.RED},nodes={
+                    {n=G.UIT.T, config = {text="Game Stuff",scale=0.4,colour=G.C.WHITE,juice=true,align="cm",vert=true}},
                 }},
-                {n=G.UIT.R,config={minw=10,r=0,minh=0.25,align="tm"}}, -- break in line because yes
+                -- {n=G.UIT.C,config={minw=0,r=0,minh=0.25,align="cl"},nodes={
+                --     {n=G.UIT.T, config = {text="For if you actually want to modify this stuff. Why though?",scale=0.4,colour=G.C.WHITE,juice=true,align="tm",vert=true}},
+                -- }},
+                -- {n=G.UIT.R,config={minw=10,r=0,minh=0.25,align="tm"}}, -- break in line because yes
+                {n=G.UIT.R,config={minw=10,r=0,minh=0.75,align="cr"},nodes = {
+                -- {n=G.UIT.C,config={minw=10}
                 create_toggle({
                     label="Decks",
                     ref_table=SparkLatro.ModID.config,
@@ -58,20 +65,10 @@ return { n= G.UIT.ROOT, config = {r=0.1,minw=10,align="cm",padding=0.5,colour=G.
                     info={"Enable or Disable SparkLatro's tooltips"},
                     info_scale = 0.4,
                 }),
-                create_option_cycle({
-                    options = {"Page 1", "Page 2"},
-                    scale = 0.8,
-                    ref_table=SparkLatro,
-                    cycle_shoulders = true,
-                    opt_callback = 'test',
-                    -- current_option = 1,
-                    -- colour = G.C.RED,
-                    no_pips = true,
-                    focus_args = {
-                        snap_to = true,
-                        nav = 'wide'
-                    }
-                })
-            }}
-        }
-}
+                }}},
+            }
+        }}
+    end
+end
+print(returnAMenu("Page 1"))
+return returnAMenu("Page 1")
