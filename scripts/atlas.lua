@@ -71,3 +71,15 @@ SMODS.Atlas{
     px=71,
     py=95
 }
+SMODS.Atlas{
+    key="sparkseal",
+    path="sparkseal.png",
+    px=71,
+    py=95,
+}
+SMODS.Atlas{
+    key="sealspectrals",
+    path="seal_spectrals.png",
+    px=71,
+    py=95
+}

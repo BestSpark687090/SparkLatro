@@ -4,4 +4,5 @@ return {
     comsumables = true,
     jokers = true,
     show_tooltips = true,
+    seals = true
 }

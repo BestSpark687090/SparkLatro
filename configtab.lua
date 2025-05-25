@@ -41,11 +41,18 @@ function returnAMenu(menu_name)
       info={"Enable or disable SparkLatro's decks"},
       info_scale=0.4,
    })
-   leftside_nodes[#leftside_nodes + 1] =create_toggle({
+   leftside_nodes[#leftside_nodes + 1] = create_toggle({
       label="Consumables",
       ref_table=SparkLatro.ModID.config,
       ref_value="consumables",
       info={"Enable or disable SparkLatro's Consumables","(Planets, Spectrals, etc)"},
+      info_scale=0.4
+   })
+   leftside_nodes[#leftside_nodes + 1] = create_toggle({
+      label="Seals",
+      ref_table=SparkLatro.ModID.config,
+      ref_value="seals",
+      info={"Enable or disable SparkLatro's Seals"},
       info_scale=0.4
    })
    local rightside_nodes = {}

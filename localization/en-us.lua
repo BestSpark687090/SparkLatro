@@ -6,10 +6,15 @@ return {
             k_spl_watermelon = "Watermelon",
             k_spl_hand_entire_deck = "The Entire Deck"
         },
+        labels = {
+            spl_spark_seal = "Spark Seal",
+            spl_ducky_seal_seal = "Ducky Seal"
+        }
     },
     -- c_entireity = "Entire Deck Thingy",
     -- c_perkeo = "Perkeo?"
     descriptions={
+    --#region Joker Descriptions
         Joker = {
             j_SPL_draw_full = {
                 name="Draw Full",
@@ -93,6 +98,7 @@ return {
                 }
             }
         },
+    -- #endregion
         Planet = {
             c_SPL_theentiredeck = {
                 name="The Entire Deck, but as a Planet for some reason",
@@ -104,7 +110,38 @@ return {
                 }
             }
         },
+        Spectral = {
+            c_SPL_spark_seal_spectral = {
+                name = "Spark Seal",
+                text = {
+                    "Add a {T:spark_seal}Spark Seal",
+                    "to {C:attention}1{} selected",
+                    "card in your hand"
+                }
+            },
+            c_SPL_ducky_seal_spectral = {
+                name = "{E:1}Ducky Seal",
+                text = {
+                    "Add a {}"
+                }
+            }
+        },
         Other = {
+            spl_spark_seal = {
+                name = "Spark Seal",
+                text = {
+                    "Does.. something?"
+                }
+            },
+            spl_ducky_seal_seal = {
+                name = "Ducky Seal",
+                text = {
+                    "The seal of Ducky.",
+                    "He approves.",
+                    "Gives... bonuses."
+                }
+            },
+    -- #region Tooltips
             SPL_ideaby = {
                 name = "Joker idea by",
                 text = {
@@ -142,7 +179,7 @@ return {
                     "placeholder. It was just for testing,",
                     "but I decided to keep it in here anyways."
                 }
-            }
+            },
         },
         rarity = {
             rareplus = {
@@ -155,6 +192,8 @@ return {
                     "gotta figure that out yourself!"
                 }
             }
-        }
+        },
+    -- #endregion Tooltips
     },
+
 }

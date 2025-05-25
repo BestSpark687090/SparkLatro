@@ -1,3 +1,4 @@
+if SPL.config.consumables then
 SMODS.Consumable{
     key="theentiredeck",
     set="Planet",
@@ -51,3 +52,17 @@ SMODS.Consumable{
 		end
 	end,
 }
+SMODS.Consumable{
+	key="spark_seal_spectral",
+	set="Spectral",
+	atlas="sealspectrals",
+	pos = {x=0,y=1},
+}
+SMODS.Consumable{
+	key="ducky_seal_spectral",
+	set="Spectral",
+	atlas="sealspectrals",
+	pos = {x=0,y=0},
+	soul_pos = {x=1,y=0}
+}
+end
