@@ -438,6 +438,7 @@ SMODS.Joker{
         end
     end
 }
+
 SMODS.Joker{
     key="ducky",
     rarity=4, -- The Legendary Ducky is here!,
@@ -446,6 +447,7 @@ SMODS.Joker{
     pos = {x=0,y=0},
     soul_pos = {x=1,y=0},
     loc_vars = function(self,info_queue,card)
+        G.ARGS.LOC_COLOURS["Ducky"] = HEX("FFD800") 
         return {
             vars = {
                 colours = {

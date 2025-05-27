@@ -122,7 +122,9 @@ return {
             c_SPL_ducky_seal_spectral = {
                 name = "{E:1}Ducky Seal",
                 text = {
-                    "Add a {}"
+                    "Add a {T:ducky_seal}Ducky Seal",
+                    "to {C:attention}1{} selected",
+                    "card in your hand"
                 }
             }
         },
@@ -130,7 +132,7 @@ return {
             spl_spark_seal = {
                 name = "Spark Seal",
                 text = {
-                    "Does.. something?"
+                    "Gives "
                 }
             },
             spl_ducky_seal_seal = {
@@ -138,7 +140,11 @@ return {
                 text = {
                     "The seal of Ducky.",
                     "He approves.",
-                    "Gives... bonuses."
+                    "Gives... bonuses.",
+                    "{s:0.1}1 in #1# odds to give you the Legendary Ducky",
+                    "{s:0.1}and gives you {C:mult,s:0.1}+#3#{s:0.1} mult and {X:mult,s:0.1}x#4#{s:0.1} mult when you hit the odds",
+                    "{s:0.1}Otherwise, gives {C:mult,s:0.1}+#2#{s:0.1} Mult and {X:mult,s:0.1}x#3#{s:0.1} Mult",
+                    "{s:0.5,C:inactive}The text above is purposefully hard to read{}"
                 }
             },
     -- #region Tooltips
