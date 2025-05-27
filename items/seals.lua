@@ -16,5 +16,5 @@ SMODS.Seal{
     atlas="sparkseal",
     pos={x=1,y=0},
     badge_colour=HEX("FFFF00"),
-    sound = {sound = "ducky_seal_SFX",per=0.8,vol=1 }
+    sound = {sound = "ducky_seal",per=0.8,vol=1 }
 }
