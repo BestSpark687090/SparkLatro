@@ -46,3 +46,14 @@ position="at"
 payload="{n=G.UIT.T, config={text = v, scale = args.info_scale, colour = G.C.UI.TEXT_LIGHT}}" 
 #... this worked first try again.
 # i have no clue how i'm doing this but i am!
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Cryptid "items/enhanced.lua"]'
+pattern = "local sl_deck = {"
+match_indent=true
+position="before"
+payload='''
+print("[SparkLatro] Injected into Cryptid!")
+Cryptid.edeck_sprites.seal.SPL_ducky_seal = {atlas="SPL_sealspectrals", pos = {x=0,y=0}}
+Cryptid.edeck_sprites.seal.SPL_spark_seal = {atlas="SPL_sealspectrals", pos = {x=0,y=1}}
+'''

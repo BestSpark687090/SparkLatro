@@ -1,5 +1,5 @@
 SMODS.Seal{
-    key="spark",
+    key="spark_seal",
     atlas="sparkseal",
     pos = {x=0,y=0},
     badge_colour = HEX("FF0000"),
@@ -147,7 +147,8 @@ SMODS.Seal{
                 self.config.extra.plus_mult,
                 self.config.extra.x_mult,
                 self.config.extra.plus_mult_when_legendary,
-                self.config.extra.x_mult_when_legendary
+                self.config.extra.x_mult_when_legendary,
+                G.GAME.probabilities.normal or 1
             }
         }
     end,
@@ -155,7 +156,7 @@ SMODS.Seal{
         -- main_scoring context is used whenever the card is scored
         
         if context.main_scoring and context.cardarea == G.play then
-            local legendarycheck = pseudorandom("SPL_Gain_Legendary_Ducky_Check",1,100) -- little funny chance :P
+            local legendarycheck = pseudorandom("SPL_Gain_Legendary_Ducky_Check",1,(100/(G.GAME.probabilities.normal or 1))) -- little funny chance :P
             if legendarycheck == 1 then
                 return {
                     G.E_MANAGER:add_event(Event({func = function()

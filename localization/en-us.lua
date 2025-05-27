@@ -7,7 +7,7 @@ return {
             k_spl_hand_entire_deck = "The Entire Deck"
         },
         labels = {
-            spl_spark_seal = "Spark Seal",
+            spl_spark_seal_seal = "Spark Seal",
             spl_ducky_seal_seal = "Ducky Seal"
         }
     },
@@ -115,7 +115,7 @@ return {
                 name = "Spark Seal",
                 text = {
                     "Add a {T:spark_seal}Spark Seal",
-                    "to {C:attention}1{} selected",
+                    "to {C:attention}#1#{} selected",
                     "card in your hand"
                 }
             },
@@ -123,16 +123,16 @@ return {
                 name = "{E:1}Ducky Seal",
                 text = {
                     "Add a {T:ducky_seal}Ducky Seal",
-                    "to {C:attention}1{} selected",
+                    "to {C:attention}#1#{} selected",
                     "card in your hand"
                 }
             }
         },
         Other = {
-            spl_spark_seal = {
+            spl_spark_seal_seal = {
                 name = "Spark Seal",
                 text = {
-                    "Gives "
+                    "Gives... something?"
                 }
             },
             spl_ducky_seal_seal = {
@@ -141,10 +141,13 @@ return {
                     "The seal of Ducky.",
                     "He approves.",
                     "Gives... bonuses.",
-                    "{s:0.1}1 in #1# odds to give you the Legendary Ducky",
-                    "{s:0.1}and gives you {C:mult,s:0.1}+#3#{s:0.1} mult and {X:mult,s:0.1}x#4#{s:0.1} mult when you hit the odds",
-                    "{s:0.1}Otherwise, gives {C:mult,s:0.1}+#2#{s:0.1} Mult and {X:mult,s:0.1}x#3#{s:0.1} Mult",
-                    "{s:0.5,C:inactive}The text above is purposefully hard to read{}"
+                    "{s:0.5}#6# in #1# odds to give you the Legendary Ducky",
+                    "{s:0.5}and gives you {C:mult,s:0.5}+#3#{s:0.5} mult and",
+                    "{X:mult,s:0.5}x#5#{s:0.5} mult when you hit the odds",
+                    "{s:0.5}Otherwise, gives {C:mult,s:0.5}+#2#{s:0.5} Mult and",
+                    "{X:mult,s:0.5}x#3#{s:0.5} Mult",
+                    "{C:inactive}The text above is purposefully hard to read,",
+                    "{C:inactive}but is still readable.{}"
                 }
             },
     -- #region Tooltips
