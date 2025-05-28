@@ -35,16 +35,3 @@ SPL.config_tab = SPL.config_file
 G.C.RARITY.rarePlus = HEX("9C2010")
 -- Talisman Support (I'm probably gonna make that a requirement)
 to_big = to_big or function(x) return x end
-SMODS.Shader{
-	key = "red",
-	path="red.fs"
-}
-SMODS.Edition{
-	key = "red_ed",
-	shader = "red",
-	loc_txt = {
-		label = "h",
-		name = "fdsaf"
-	},
-	disable_base_shader = false
-}
