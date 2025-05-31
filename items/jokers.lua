@@ -5,8 +5,7 @@ SMODS.Joker{
     rarity = 3,
     atlas="spark",
     pos = { x = 0, y = 0 },
-    config = {extra = 52, other = {chips_exp = 2,mult_exp = 2}},
-    center = {config = {extra = 52},},
+    config = {cards_added = 0, other = {chips_exp = 2,mult_exp = 2}},
     cost = 52,
     loc_vars = function(self, info_queue, card)
         if card.area and card.area ~= G.jokers and SPL.config.show_tooltips then
@@ -50,12 +49,17 @@ SMODS.Joker{
         end
 	end,
     add_to_deck = function(self,card,from_debuff)
-        SMODS.change_play_limit(#G.deck.cards-5)
-        SMODS.change_discard_limit(#G.deck.cards-5)
+        if #G.deck.cards == 0 then
+            self.config.cards_added = #G.hand.cards - 5
+        else
+            self.config.cards_added = #G.deck.cards - 5 
+        end
+        SMODS.change_play_limit(self.config.cards_added)
+        SMODS.change_discard_limit(self.config.cards_added)
     end,
     remove_from_deck = function(self,card,from_debuff)
-        SMODS.change_play_limit(-1* (#G.deck.cards - 5))
-        SMODS.change_discard_limit(-1*(#G.deck.cards -5 ))
+        SMODS.change_play_limit(-1* self.config.cards_added)
+        SMODS.change_discard_limit(-1*self.config.cards_added)
     end
 }
 -- Duck with a Bomb
@@ -459,18 +463,20 @@ SMODS.Joker{
     -- TODO: write Ducky Calc Function
 }
 -- The joker that lets you touch Grass fr fr
-SMODS.Joker{
-    key="grass_joker",
-    rarity=1,
-    cost=3,
-    atlas="grass",
-    pos={x=0,y=0},
-    generate_ui = function(self,info_queue,card,desc_nodes,specific_vars,full_UI_table)
-        -- yes the variables are not going to be used its fine
-        SparkLatro.touched_grass = true
-        check_for_unlock({type="SPL_touch_grass"})
-    end,
-    calculate = function(self,info_queue,card)
-    end
-}
+-- NVM its disabled for now cause achievements aint workin
+-- SMODS.Joker{
+--     key="grass_joker",
+--     rarity=1,
+--     cost=3,
+--     atlas="grass",
+--     pos={x=0,y=0},
+--     generate_ui = function(self,info_queue,card,desc_nodes,specific_vars,full_UI_table)
+--         print("hi yes we are generating the uI")
+--         -- yes the variables are not going to be used its fine
+--         SparkLatro.touched_grass = true
+--         check_for_unlock({type="SPL_touch_grass"})
+--     end,
+--     calculate = function(self,info_queue,card)
+--     end
+-- }
 end

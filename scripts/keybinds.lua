@@ -17,6 +17,7 @@ if SPL.config.keybinds then
     SMODS.Keybind{
         key="Crash Game",
         key_pressed="c",
+        held_keys={"rctrl"}, -- I don't wanna hit this all the time, so Right Control is here instead :P
         action = function(self)
             error("Manually generated crash")
         end
