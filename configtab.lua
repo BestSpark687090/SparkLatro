@@ -70,6 +70,14 @@ function returnAMenu(menu_name)
          info={"Enable or Disable SparkLatro's tooltips"},
          info_scale = 0.4,
    })
+   rightside_nodes[#rightside_nodes + 1] = create_toggle({
+         label = "Custom Consumables",
+         ref_table=SparkLatro.ModID.config,
+         ref_value="custom_consumables",
+         info={"Enable or disable SparkLatro's custom Consumables",
+         "(WIP, may be removed or something)"},
+         info_scale=0.4
+   })
    for _, n in pairs(leftside_nodes) do
       n.config.align = "cr"
    end

@@ -50,12 +50,12 @@ SMODS.Joker{
         end
 	end,
     add_to_deck = function(self,card,from_debuff)
-        G.hand.config.highlighted_limit = G.hand.config.highlighted_limit
-		+ math.max(1, math.floor(self.config.extra))
+        SMODS.change_play_limit(#G.deck.cards-5)
+        SMODS.change_discard_limit(#G.deck.cards-5)
     end,
     remove_from_deck = function(self,card,from_debuff)
-        G.hand.config.highlighted_limit = G.hand.config.highlighted_limit
-		- math.max(1, math.floor(self.config.extra))
+        SMODS.change_play_limit(-1* (#G.deck.cards - 5))
+        SMODS.change_discard_limit(-1*(#G.deck.cards -5 ))
     end
 }
 -- Duck with a Bomb
@@ -455,6 +455,22 @@ SMODS.Joker{
                 }
             }
         }
+    end
+    -- TODO: write Ducky Calc Function
+}
+-- The joker that lets you touch Grass fr fr
+SMODS.Joker{
+    key="grass_joker",
+    rarity=1,
+    cost=3,
+    atlas="grass",
+    pos={x=0,y=0},
+    generate_ui = function(self,info_queue,card,desc_nodes,specific_vars,full_UI_table)
+        -- yes the variables are not going to be used its fine
+        SparkLatro.touched_grass = true
+        check_for_unlock({type="SPL_touch_grass"})
+    end,
+    calculate = function(self,info_queue,card)
     end
 }
 end

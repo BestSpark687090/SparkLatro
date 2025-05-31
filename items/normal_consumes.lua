@@ -57,12 +57,14 @@ SMODS.Consumable{
 	set="Spectral",
 	atlas="sealspectrals",
 	pos = {x=0,y=1},
+	-- TODO: write loc_vars, calculate (?), use, can_use
 }
 SMODS.Consumable{
 	key="ducky_seal_spectral",
 	set="Spectral",
 	atlas="sealspectrals",
 	pos = {x=0,y=0},
-	soul_pos = {x=1,y=0}
+	soul_pos = {x=1,y=0},
+	-- TODO: write loc_vars, calculate (?), use, can_use
 }
 end

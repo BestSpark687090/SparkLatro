@@ -9,6 +9,12 @@ return {
         labels = {
             spl_spark_seal_seal = "Spark Seal",
             spl_ducky_seal_seal = "Ducky Seal"
+        },
+        achievement_names={
+            ach_SPL_touch_grass = "Touch Grass"
+        },
+        achievement_descriptions={
+            ach_SPL_touch_grass = "Touch the Grass. It's shrimple."
         }
     },
     -- c_entireity = "Entire Deck Thingy",
