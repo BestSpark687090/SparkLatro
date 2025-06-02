@@ -57,6 +57,35 @@ SMODS.Consumable{
 	set="Spectral",
 	atlas="sealspectrals",
 	pos = {x=0,y=1},
+	config = {
+		-- apparently this adds a tooltip
+		mod_conv = "SPL_spark_seal",
+		selected_card_number = 1
+	},
+	loc_vars = function(self,info_queue,card)
+		-- add spark seal tooltip 
+		info_queue[#info_queue + 1] = G.P_SEALS.SPL_spark_seal
+		return {
+			vars = {
+				self.config.selected_card_number
+			} 
+		}
+	end,
+	can_use = function(self,card)
+		if #G.hand.highlighted > 0 then
+			return true
+		end
+	end,
+	use = function(self,card,area,copier)
+		for i = 1, #G.hand.highlighted do
+			local highlighted = G.hand.highlighted[i]
+			-- im not even gonna use the event manager cause i dont like it
+			-- why? deal with it
+			highlighted:flip()
+			highlighted:set_seal("SPL_spark_seal")
+			highlighted:flip()		
+		end
+	end,
 	-- TODO: write loc_vars, calculate (?), use, can_use
 }
 SMODS.Consumable{
@@ -65,6 +94,10 @@ SMODS.Consumable{
 	atlas="sealspectrals",
 	pos = {x=0,y=0},
 	soul_pos = {x=1,y=0},
+	config = {
+		selected_card_number = 1
+	},
+
 	-- TODO: write loc_vars, calculate (?), use, can_use
 }
 end
