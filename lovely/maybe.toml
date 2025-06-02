@@ -2,16 +2,6 @@
 version = "1.0.0"
 dump_lua = true
 priority = -1
-# stolen from cryptid mod.
-# cryptid is a good starting place :)
-[[patches]]
-[patches.pattern]
-target = "functions/button_callbacks.lua"
-pattern = "if #G.hand.highlighted <= 0 or G.GAME.blind.block_play or #G.hand.highlighted > 5 then "
-position = "at"
-payload = "if #G.hand.highlighted <= 0 or G.GAME.blind.block_play or #G.hand.highlighted > G.hand.config.highlighted_limit then "
-match_indent = true
-times = 1
 [[patches]]
 # Stretches the Balatro Logo. Why? Because i can.
 [patches.pattern]
@@ -46,6 +36,7 @@ position="at"
 payload="{n=G.UIT.T, config={text = v, scale = args.info_scale, colour = G.C.UI.TEXT_LIGHT}}" 
 #... this worked first try again.
 # i have no clue how i'm doing this but i am!
+# im talking about above part jsyk :P
 [[patches]]
 [patches.pattern]
 target = '=[SMODS Cryptid "items/enhanced.lua"]'
