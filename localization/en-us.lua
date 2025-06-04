@@ -20,7 +20,6 @@ return {
     -- c_entireity = "Entire Deck Thingy",
     -- c_perkeo = "Perkeo?"
     descriptions={
-    --#region Joker Descriptions
         Joker = {
             j_SPL_draw_full = {
                 name="Draw Full",
@@ -104,7 +103,6 @@ return {
                 }
             }
         },
-    -- #endregion
         Planet = {
             c_SPL_theentiredeck = {
                 name="The Entire Deck, but as a Planet for some reason",
@@ -135,10 +133,14 @@ return {
             }
         },
         Other = {
+            -- has to be lowercase cause of... reasons i guess
             spl_spark_seal_seal = {
                 name = "Spark Seal",
                 text = {
-                    "Gives... something?"
+                    "Gives random bonuses.",
+                    "Fixed 1 in 10 chance for:",
+                    "{C:mult}+Mult{}, {X:mult}xMult{}, {C:chips}+Chips{}, {X:chips}xChips{},",
+                    ""
                 }
             },
             spl_ducky_seal_seal = {
@@ -156,7 +158,6 @@ return {
                     "{C:inactive}but is still readable.{}"
                 }
             },
-    -- #region Tooltips
             SPL_ideaby = {
                 name = "Joker idea by",
                 text = {
@@ -208,7 +209,6 @@ return {
                 }
             }
         },
-    -- #endregion Tooltips
     },
 
 }
