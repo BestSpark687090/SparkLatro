@@ -46,6 +46,7 @@ return {
                     "{C:inactive,s:0.7}(You... probably shouldn't take this.)"
                 }
             },
+            -- not in game
             j_SPL_expired_coupon = {
                 name="Expired Coupon",
                 text={
@@ -53,6 +54,7 @@ return {
                     "your hand scores {C:attention}less than 1,000 chips.{}"
                 }
             },
+            -- not in game
             j_SPL_spongebop = {
                 name="SpongeBop",
                 text={

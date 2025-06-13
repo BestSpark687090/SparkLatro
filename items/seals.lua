@@ -92,6 +92,14 @@ SMODS.Seal{
                                 -- literally make the colors balance or something
                                 ease_colour(G.C.UI_CHIPS, {0.8, 0.45, 0.85, 1})
                                 ease_colour(G.C.UI_MULT, {0.8, 0.45, 0.85, 1})
+                                G.E_MANAGER:add_event(Event({
+                                    trigger="after",
+                                    delay="2",
+                                    func = function()
+                                        ease_colour(G.C.UI_CHIPS, G.C.BLUE,2)
+                                        ease_colour(G.C.UI_MULT, G.C.RED, 2)
+                                    end
+                                }))
                                 return true
                             end,
                         }))
@@ -130,8 +138,7 @@ SMODS.Seal{
                 }
             end
             -- once it's done, reset the colors back
-            ease_colour(G.C.UI_CHIPS, G.C.BLUE,2)
-            ease_colour(G.C.UI_MULT, G.C.RED, 2)
+
         end
     end
 }
