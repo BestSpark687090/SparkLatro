@@ -3,6 +3,15 @@ SMODS.Seal{
     atlas="sparkseal",
     pos = {x=0,y=0},
     badge_colour = HEX("FF0000"),
+    loc_vars = function(self,info_queue,card)
+        return{
+            vars = {
+                colours = {
+                    {0.8, 0.45, 0.85, 1}
+                }
+            }
+        }
+    end,
     calculate = function(self,card,context)
         if context.main_scoring and context.cardarea == G.play then
             -- stuff we can do probably:
@@ -23,7 +32,7 @@ SMODS.Seal{
             local outcome = pseudorandom("SPL_test",1,10)
             if outcome == 1 then -- Make the ^ mults low numbers cause the rolls usually hit high
                 -- Gives EChips
-                local exponent = 6 - pseudorandom("SPL_sparkseal_echips_exponent",2,5) -- the 6 - is for reversing it to make it better :P
+                local exponent = pseudorandom("SPL_sparkseal_echips_exponent",2,6)
                 local amount = math.floor(pseudorandom("SPL_sparkseal_echips_amount",1,1000)/100)
                 local carats = string.rep("^",exponent)
                 return {
@@ -32,7 +41,7 @@ SMODS.Seal{
                 }
             elseif outcome == 2 then
                 -- emult
-                local exponent = 6 - pseudorandom("SPL_sparkseal_emult_exponent",1,5) -- the 6 - is for reversing it to make it better :P
+                local exponent = 6 - pseudorandom("SPL_sparkseal_emult_exponent",2,6)
                 local amount = math.floor(pseudorandom("SPL_sparkseal_emult_amount",1,1000)/100)
                 local carats = string.rep("^",exponent)
                 return {

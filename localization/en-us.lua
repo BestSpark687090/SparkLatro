@@ -138,9 +138,11 @@ return {
                 name = "Spark Seal",
                 text = {
                     "Gives random bonuses.",
-                    "Fixed 1 in 10 chance for:",
-                    "{C:mult}+Mult{}, {X:mult}xMult{}, {C:chips}+Chips{}, {X:chips}xChips{},",
-                    ""
+                    "Fixed 1 in 10 chance for each of these:",
+                    "{C:mult}+Mult{}, {X:mult,C:white}xMult{}, {C:chips}+Chips{}, {X:chips,C:white}xChips{},",
+                    "Swap {C:mult}Chips{} and {C:chips}Mult{}, {V:1}Balance{} {C:chips}Chips{} and {C:mult}Mult{},",
+                    "{X:dark_edition,C:chips}^Chips{}, {X:dark_edition,C:mult}^Mult{}, {C:money}+${}, {C:planet}Level up Hand{}",
+                    "{C:edition,E:1}Now this is where the fun begins.{}" -- Dang i like this quote
                 }
             },
             spl_ducky_seal_seal = {
