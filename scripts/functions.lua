@@ -44,6 +44,7 @@ function info_tip_from_rows(desc_nodes, name)
 			v[1]['config']['colour'] = desc_nodes.text_colour or G.C.UI.TEXT_LIGHT
         t[#t+1] = {n=G.UIT.R, config={align = "cm"}, nodes=v}
         end
+		sprite = Sprite(0,0,1,1, G.ASSET_ATLAS["SPL_mrotsniarb"],{x=0,y=0})
         return {n=G.UIT.R, config={align = "cm", colour = darken(desc_nodes.colour, 0.15), r = 0.1}, nodes=	{
             {n=G.UIT.R, config={align = "tm", minh = 0.36, padding = 0.03}, nodes={{n=G.UIT.T, config={text = desc_nodes.title, scale = 0.32, colour = G.C.UI.TEXT_LIGHT}}}}, -- Title Spot at the Top
             {n=G.UIT.R, config={align = "cm", minw = 1.5, minh = 0.4, r = 0.1, padding = 0.05, colour = desc_nodes.colour, 0.5}, nodes={{n=G.UIT.R, config={align = "cm", padding = 0.03}, nodes=t}}}

@@ -138,7 +138,7 @@ return {
                     "{C:mult}+Mult{}, {X:mult,C:white}xMult{}, {C:chips}+Chips{}, {X:chips,C:white}xChips{},",
                     "Swap {C:mult}Chips{} and {C:chips}Mult{}, {V:1}Balance{} {C:chips}Chips{} and {C:mult}Mult{},",
                     "{X:dark_edition,C:chips}^Chips{}, {X:dark_edition,C:mult}^Mult{}, {C:money}+${}, {C:planet}Level up Hand{}",
-                    "{C:edition,E:1}Now this is where the fun begins.{}" -- Dang i like this quote
+                    "{C:edition,E:1,B:2,s:1.5}Now this is where the fun begins.{}" -- Dang i like this quote
                 }
             },
             spl_ducky_seal_seal = {

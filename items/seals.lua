@@ -7,7 +7,8 @@ SMODS.Seal{
         return{
             vars = {
                 colours = {
-                    {0.8, 0.45, 0.85, 1}
+                    {0.8, 0.45, 0.85, 1},
+                    G.C.DARK_EDITION
                 }
             }
         }
@@ -121,7 +122,7 @@ SMODS.Seal{
             elseif outcome == 10 then
                 -- emult
                 local exponent = pseudorandom("SPL_sparkseal_emult_exponent",2,4)
-                local amount = pseudorandom("SPL_sparkseal_emult_amount",1,1000)
+                local amount = pseudorandom("SPL_sparkseal_emult_amount",1,10)
                 local carats = string.rep("^",exponent)
                 return {
                     message = carats..tostring(amount).." Mult!?!?",
