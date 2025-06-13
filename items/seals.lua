@@ -30,23 +30,17 @@ SMODS.Seal{
             -- just as a note: yes i know. using tostring is kinda dum dum
             -- i honestly dont care as it gets the job done and makes it easier to type
             local outcome = pseudorandom("SPL_test",1,10)
-            if outcome == 1 then -- Make the ^ mults low numbers cause the rolls usually hit high
-                -- Gives EChips
-                local exponent = pseudorandom("SPL_sparkseal_echips_exponent",2,6)
-                local amount = math.floor(pseudorandom("SPL_sparkseal_echips_amount",1,1000)/100)
-                local carats = string.rep("^",exponent)
+            if outcome == 1 then
+                -- pluschips
+                local plus_chips = pseudorandom("SPL_sparkseal_plus_chips",1,20)
                 return {
-                    message = carats..tostring(amount).." Chips!?!?",
-                    hyperchips_mod = {exponent,amount}
+                    chips = plus_chips
                 }
             elseif outcome == 2 then
-                -- emult
-                local exponent = 6 - pseudorandom("SPL_sparkseal_emult_exponent",2,6)
-                local amount = math.floor(pseudorandom("SPL_sparkseal_emult_amount",1,1000)/100)
-                local carats = string.rep("^",exponent)
+                -- xchips
+                local x_chips = pseudorandom("SPL_sparkseal_x_chips",1,5)
                 return {
-                    message = carats..tostring(amount).." Mult!?!?",
-                    hypermult_mod = {exponent,amount}
+                    x_chips = x_chips
                 }
             elseif outcome == 3 then
                 -- swap
@@ -114,17 +108,24 @@ SMODS.Seal{
                 return{
                     xmult = x_mult
                 }
-            elseif outcome == 9 then
-                -- pluschips
-                local plus_chips = pseudorandom("SPL_sparkseal_plus_chips",1,20)
+            elseif outcome == 9 then -- Make the ^ mults low numbers cause the rolls usually hit high
+                -- nevermind im entirely wrong they hit low so often
+                -- Gives EChips
+                local exponent = pseudorandom("SPL_sparkseal_echips_exponent",2,4)
+                local amount = pseudorandom("SPL_sparkseal_echips_amount",1,10)
+                local carats = string.rep("^",exponent)
                 return {
-                    chips = plus_chips
+                    message = carats..tostring(amount).." Chips!?!?",
+                    hyperchip_mod = {exponent,amount}
                 }
             elseif outcome == 10 then
-                -- xchips
-                local x_chips = pseudorandom("SPL_sparkseal_x_chips",1,5)
+                -- emult
+                local exponent = pseudorandom("SPL_sparkseal_emult_exponent",2,4)
+                local amount = pseudorandom("SPL_sparkseal_emult_amount",1,1000)
+                local carats = string.rep("^",exponent)
                 return {
-                    x_chips = x_chips
+                    message = carats..tostring(amount).." Mult!?!?",
+                    hypermult_mod = {exponent,amount}
                 }
             end
             -- once it's done, reset the colors back

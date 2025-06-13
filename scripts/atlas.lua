@@ -16,7 +16,7 @@ SMODS.Atlas{
     path="spark.png",
     px=64,
     py=64,
-}:register()
+}
 SMODS.Atlas{
     key="skull",
     path="skull.png",

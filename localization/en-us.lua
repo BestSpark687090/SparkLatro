@@ -35,8 +35,7 @@ return {
                     "In {V:1}#1#{} rounds, {C:attention}destroy",
                     "this joker and {C:attention}the ",
                     "{C:attention}others around it",
-                    "{C:red,S:2}Can destroy {B:2,C:white}Eternal{C:red} Jokers",
-                    "{s:0.5,C:inactive}Idea by Javapeoplebelike and tacovr123"
+                    "{C:red,S:2}Can destroy {B:2,C:white}Eternal{C:red} Jokers"
                 }
             },
             j_SPL_jesters_regret = {
@@ -44,16 +43,14 @@ return {
                 text={
                     "{C:chips}+#1# Chips{}, {C:mult}-#2# Mult{}",
                     "{s:1.1,C:inactive}\"He laughed... then cried.\"",
-                    "{C:inactive,s:0.7}(You... probably shouldn't take this.)",
-                    "{s:0.5,C:inactive}Idea by !TingTummyTrouble"
+                    "{C:inactive,s:0.7}(You... probably shouldn't take this.)"
                 }
             },
             j_SPL_expired_coupon = {
                 name="Expired Coupon",
                 text={
                     "{X:chips}x2{C:chips} Chips{}, but only if",
-                    "your hand scores {C:attention}less than 1,000 chips.{}",
-                    "{s:0.5,C:inactive}Idea by !TingTummyTrouble"
+                    "your hand scores {C:attention}less than 1,000 chips.{}"
                 }
             },
             j_SPL_spongebop = {
@@ -61,8 +58,7 @@ return {
                 text={
                     "Shouts randomly, and gains {C:mult}+1 mult{}",
                     "each time he shouts.",
-                    "{C:inactive}(Currently #1# Mult)",
-                    "{s:0.5,C:inactive}Idea by !TingTummyTrouble"
+                    "{C:inactive}(Currently #1# Mult)"
                 }
             },
             j_SPL_tnirpeulb = {
