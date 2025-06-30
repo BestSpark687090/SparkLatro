@@ -9,7 +9,7 @@ SMODS.Back{
         text={
             "Start with a Deck",
             "full of ",
-            "{C:attention,T:e_polychrome}Polychrome{},{C:inactive,T:m_glass}Glass{},{C:red,T:Red}Red Seal{}",
+            "{C:attention,T:e_polychrome}Polychrome{},{C:inactive,T:m_steel}Steel{},{C:red,T:Red}Red Seal{}",
             "{E:1,C:diamonds}#1# of #2#{}",
         },
     },
@@ -24,7 +24,7 @@ SMODS.Back{
         G.E_MANAGER:add_event(Event({
             func = function()
                 for i, card in ipairs(G.playing_cards) do
-                    G.playing_cards[i]:set_ability(G.P_CENTERS.m_glass)
+                    G.playing_cards[i]:set_ability(G.P_CENTERS.m_steel)
                     G.playing_cards[i]:set_edition({
                         polychrome = true
                     }, true, true)
