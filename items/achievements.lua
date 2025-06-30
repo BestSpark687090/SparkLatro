@@ -27,15 +27,7 @@ SMODS.Achievement{
     bypass_all_unlocked = true,
     unlock_condition = function(self,args)
         if args.type == "SPL_touch_grass" then
-            print("unlocked with the prefix")
             return true
         end
-    end
-}
-SMODS.Achievement{
-    key="testach",
-    atlas="achieve",
-    unlock_condition = function(self,args)
-        return true
     end
 }

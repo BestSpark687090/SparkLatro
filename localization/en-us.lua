@@ -99,6 +99,13 @@ return {
                 text = {
                     "It's the Ducky!!"
                 }
+            },
+            j_SPL_grass_joker = {
+                name = "{C:green}Grass{}",
+                text = {
+                    "It's... grass.",
+                    "{s:0.5,C:inactive}(This joker only shows up in the collection, just so you can touch grass.)"
+                }
             }
         },
         Planet = {
@@ -209,6 +216,14 @@ return {
                 }
             }
         },
+        Blind = {
+            bl_spl_sparkblind = {
+                name = "BestSpark687090",
+                text = {
+                    "Yeah i think you win?"
+                }
+            }
+        }
     },
 
 }

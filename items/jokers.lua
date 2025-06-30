@@ -470,13 +470,22 @@ SMODS.Joker{
     cost=3,
     atlas="grass",
     pos={x=0,y=0},
-    generate_ui = function(self,info_queue,card,desc_nodes,specific_vars,full_UI_table)
-        print("hi yes we are generating the uI")
+    loc_vars = function(self,info_queue,card)
         -- yes the variables are not going to be used its fine
-        SparkLatro.touched_grass = true
         check_for_unlock({type="SPL_touch_grass"})
     end,
-    calculate = function(self,info_queue,card)
+    in_pool = function(self,args)
+        return false, {allow_duplicates = false}
+    end,
+    add_to_deck = function(self,card,from_debuff)
+        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
+            print("remove me pleaseeee")
+            card_eval_status_text(card, 'extra', nil, nil, nil, {message = "Was it just a dream?", colour = G.C.GREEN})
+            -- G.jokers:remove_card(card) -- dont.
+            card:start_dissolve()
+            -- card = nil
+        return true end}))
+        
     end
 }
 end

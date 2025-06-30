@@ -5,5 +5,6 @@ return {
     jokers = true,
     show_tooltips = true,
     seals = true,
-    custom_consumables = true
+    custom_consumables = true,
+    blinds = true
 }
