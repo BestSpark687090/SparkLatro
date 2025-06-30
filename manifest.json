@@ -9,6 +9,7 @@
     "version":"1.0.0",
     "main_file":"main.lua",
     "dependencies": [
+	    "Steamodded (>=1.0.0~BETA-0404a)",
         "Talisman (>=2.1.0a)"
     ]
 }

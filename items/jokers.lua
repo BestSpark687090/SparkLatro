@@ -432,7 +432,7 @@ SMODS.Joker{
     calculate = function(self,card,context)
         if context.joker_main then 
             return {
-                message = "🍉",
+                message = ":watermelon:",
                 colour = HEX('00ff00'),
                 mult = 100,
                 chips = 100,
