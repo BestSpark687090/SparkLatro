@@ -464,19 +464,19 @@ SMODS.Joker{
 }
 -- The joker that lets you touch Grass fr fr
 -- NVM its disabled for now cause achievements aint workin
--- SMODS.Joker{
---     key="grass_joker",
---     rarity=1,
---     cost=3,
---     atlas="grass",
---     pos={x=0,y=0},
---     generate_ui = function(self,info_queue,card,desc_nodes,specific_vars,full_UI_table)
---         print("hi yes we are generating the uI")
---         -- yes the variables are not going to be used its fine
---         SparkLatro.touched_grass = true
---         check_for_unlock({type="SPL_touch_grass"})
---     end,
---     calculate = function(self,info_queue,card)
---     end
--- }
+SMODS.Joker{
+    key="grass_joker",
+    rarity=1,
+    cost=3,
+    atlas="grass",
+    pos={x=0,y=0},
+    generate_ui = function(self,info_queue,card,desc_nodes,specific_vars,full_UI_table)
+        print("hi yes we are generating the uI")
+        -- yes the variables are not going to be used its fine
+        SparkLatro.touched_grass = true
+        check_for_unlock({type="SPL_touch_grass"})
+    end,
+    calculate = function(self,info_queue,card)
+    end
+}
 end
