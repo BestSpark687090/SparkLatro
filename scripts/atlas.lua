@@ -92,6 +92,8 @@ SMODS.Atlas{
 SMODS.Atlas{
     key="sparkblindimg",
     path="sparkblind.png",
+    frames=21,
     px=34,
+    atlas_table='ANIMATION_ATLAS',
     py=34,
 }

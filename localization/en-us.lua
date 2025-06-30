@@ -217,12 +217,13 @@ return {
             }
         },
         Blind = {
-            bl_spl_sparkblind = {
+            bl_SPL_sparkblind = {
                 name = "BestSpark687090",
                 text = {
-                    "Yeah i think you win?"
+                    "Instantly win this blind.",
+                    "Why not?"
                 }
-            }
+            },
         }
     },
 
