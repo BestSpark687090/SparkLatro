@@ -157,7 +157,7 @@ return {
                     "He approves.",
                     "Gives... bonuses.",
                     "{s:0.5}#6# in #1# odds to give you the Legendary Ducky",
-                    "{s:0.5}and gives you {C:mult,s:0.5}+#3#{s:0.5} mult and",
+                    "{s:0.5}and gives you {C:mult,s:0.5}+#4#{s:0.5} mult and",
                     "{X:mult,s:0.5}x#5#{s:0.5} mult when you hit the odds",
                     "{s:0.5}Otherwise, gives {C:mult,s:0.5}+#2#{s:0.5} Mult and",
                     "{X:mult,s:0.5}x#3#{s:0.5} Mult",

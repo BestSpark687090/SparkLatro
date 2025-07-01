@@ -463,7 +463,6 @@ SMODS.Joker{
     -- TODO: write Ducky Calc Function
 }
 -- The joker that lets you touch Grass fr fr
--- NVM its disabled for now cause achievements aint workin
 SMODS.Joker{
     key="grass_joker",
     rarity=1,
@@ -488,4 +487,5 @@ SMODS.Joker{
         
     end
 }
+
 end

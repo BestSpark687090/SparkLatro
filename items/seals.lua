@@ -14,6 +14,10 @@ SMODS.Seal{
         }
     end,
     calculate = function(self,card,context)
+        if context.final_scoring_step then
+            ease_colour(G.C.UI_CHIPS, G.C.BLUE,2)
+            ease_colour(G.C.UI_MULT, G.C.RED, 2)
+        end
         if context.main_scoring and context.cardarea == G.play then
             -- stuff we can do probably:
             --[[
@@ -92,14 +96,6 @@ SMODS.Seal{
                                 -- literally make the colors balance or something
                                 ease_colour(G.C.UI_CHIPS, {0.8, 0.45, 0.85, 1})
                                 ease_colour(G.C.UI_MULT, {0.8, 0.45, 0.85, 1})
-                                G.E_MANAGER:add_event(Event({
-                                    trigger="after",
-                                    delay="2",
-                                    func = function()
-                                        ease_colour(G.C.UI_CHIPS, G.C.BLUE,2)
-                                        ease_colour(G.C.UI_MULT, G.C.RED, 2)
-                                    end
-                                }))
                                 return true
                             end,
                         }))
@@ -191,7 +187,9 @@ SMODS.Seal{
 					G.jokers:emplace(card)
                     return true end})),
                     message = "You got the Ducky!!",
-                    colour = HEX("FFD800")
+                    colour = HEX("FFD800"),
+                    mult = self.config.extra.plus_mult_when_legendary,
+                    xmult = self.config.extra.x_mult_when_legendary
                 }
             end
             return {
