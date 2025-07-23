@@ -203,6 +203,12 @@ return {
                     "but I decided to keep it in here anyways."
                 }
             },
+            SPL_sparkstake_sticker = {
+                name = "Spark Stake Sticker",
+                text = {
+                    "h"
+                }
+            }
         },
         rarity = {
             rareplus = {
@@ -224,6 +230,14 @@ return {
                     "Why not?"
                 }
             },
+        },
+        Stake = {
+           stake_SPL_sparkstake={
+                name = "Spark Stake",
+                text ={
+                    "uhhh... ???"
+                }
+            }
         }
     },
 

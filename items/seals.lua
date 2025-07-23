@@ -116,8 +116,8 @@ SMODS.Seal{
             elseif outcome == 9 then -- Make the ^ mults low numbers cause the rolls usually hit high
                 -- nevermind im entirely wrong they hit low so often
                 -- Gives EChips
-                local exponent = pseudorandom("SPL_sparkseal_echips_exponent",2,4)
-                local amount = pseudorandom("SPL_sparkseal_echips_amount",1,10)
+                local exponent = pseudorandom("SPL_sparkseal_echips_exponent",2,5)
+                local amount = pseudorandom("SPL_sparkseal_echips_amount",2,10)
                 local carats = string.rep("^",exponent)
                 return {
                     message = carats..tostring(amount).." Chips!?!?",
@@ -125,8 +125,8 @@ SMODS.Seal{
                 }
             elseif outcome == 10 then
                 -- emult
-                local exponent = pseudorandom("SPL_sparkseal_emult_exponent",2,4)
-                local amount = pseudorandom("SPL_sparkseal_emult_amount",1,10)
+                local exponent = pseudorandom("SPL_sparkseal_emult_exponent",2,5)
+                local amount = pseudorandom("SPL_sparkseal_emult_amount",2,10)
                 local carats = string.rep("^",exponent)
                 return {
                     message = carats..tostring(amount).." Mult!?!?",
@@ -134,7 +134,8 @@ SMODS.Seal{
                 }
             end
             -- once it's done, reset the colors back
-
+            ease_colour(G.C.UI_CHIPS, G.C.BLUE,2)
+            ease_colour(G.C.UI_MULT, G.C.RED, 2)
         end
     end
 }

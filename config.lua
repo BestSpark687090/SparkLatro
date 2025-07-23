@@ -6,5 +6,6 @@ return {
     show_tooltips = true,
     seals = true,
     custom_consumables = true,
-    blinds = true
+    blinds = true,
+    stakes = true,
 }
