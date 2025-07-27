@@ -97,7 +97,8 @@ return {
             j_SPL_ducky = {
                 name = "{V:1,E:1}Ducky{}",
                 text = {
-                    "It's the Ducky!!"
+                    "It's the Ducky!!",
+                    "{s:0.3}x200 mult and chips, I guess?{}"
                 }
             },
             j_SPL_grass_joker = {

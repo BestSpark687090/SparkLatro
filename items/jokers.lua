@@ -459,8 +459,17 @@ SMODS.Joker{
                 }
             }
         }
+    end,
+    calculate = function(self,card,context)
+        if context.joker_main then
+            return {
+                message= "h",
+                colour = HEX("FFD800"),
+                x_chips = 200,
+                x_mult = 200,
+            }
+        end
     end
-    -- TODO: write Ducky Calc Function
 }
 -- The joker that lets you touch Grass fr fr
 SMODS.Joker{
@@ -468,6 +477,7 @@ SMODS.Joker{
     rarity=1,
     cost=3,
     atlas="grass",
+    no_doe=true, -- i believe this is the right way to disable it from deck of equlibrium
     pos={x=0,y=0},
     loc_vars = function(self,info_queue,card)
         -- yes the variables are not going to be used its fine
