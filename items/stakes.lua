@@ -5,8 +5,15 @@ if SPL.config.stakes then
         atlas="spark",
         sticker_atlas="sealspectrals",
         sticker_pos={x=0, y=0},
+        loc_vars = function(self,info_queue,card)
+            return {
+                vars = {
+                    win_ante = math.floor(8*1.5),
+                }
+            }
+        end,
         modifiers = function()
-            G.GAME.win_ante = math.floor(G.GAME.win_ante*1.5)
+            G.GAME.win_ante = math.floor(8*1.5)
         end,
     }
 end
