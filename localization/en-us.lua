@@ -236,7 +236,7 @@ return {
            stake_SPL_sparkstake={
                 name = "Spark Stake",
                 text ={
-                    "Win on ante #1#"
+                    "Win on ante 12"
                 }
             }
         }
