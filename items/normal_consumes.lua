@@ -124,4 +124,28 @@ SMODS.Consumable{
 		end
 	end,
 }
+SMODS.Consumable{
+	key="upgrade_spectral",
+	set="Spectral",
+	loc_vars = function(self,info_queue,card)
+
+	end,
+	can_use = function(self,card,area,copier)
+		-- check if a joker is highlighted
+		for _, value in ipairs(G.hand.highlighted) do
+			if value ~= card then
+				-- i guess this is right?
+				return true
+			end
+		end
+	end,
+	use = function(self,card,area,copier)
+		for _, value in ipairs(G.hand.highlighted) do
+			if value ~= card then
+				-- i guess this is right?
+				return true
+			end
+		end
+	end
+}
 end

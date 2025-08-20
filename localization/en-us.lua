@@ -136,6 +136,14 @@ return {
                     "to {C:attention}#1#{} selected",
                     "card in your hand"
                 }
+            },
+            c_SPL_upgrade_spectral = {
+                name = "Upgrade",
+                text = {
+                    "Upgrade the selected card to a {C:attention}higher rarity",
+                    "{C:inactive}(if it has one)",
+                    "{s:1.2}(Rare -> Rare+ -> Rare++)"
+                }
             }
         },
         Other = {

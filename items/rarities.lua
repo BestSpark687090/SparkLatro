@@ -14,3 +14,11 @@ SMODS.Rarity{
         return 0.0003
     end
 }
+SMODS.Rarity{
+    key="rareplusplus",
+    badge_colour= HEX("FF0000"),
+    pools = {["Joker"] = true},
+    get_weight = function(self,weight,object_type)
+        return 0.00003 -- well there's definetly a common theme here
+    end
+}
