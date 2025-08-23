@@ -70,6 +70,13 @@ SMODS.PokerHand{
                 { 'D_2',    true },
     },
 		evaluate = function(parts, hand)
+            if SparkLatro.alwaysCountTED then -- there. i guess
+                local cards_ig = {}
+                for i, card in ipairs(hand) do
+                    table.insert(cards_ig,card)
+                end
+                return {cards_ig}
+            end
 		    if #hand >= 52 then
 		        local deck_booleans = {}
 		        local scored_cards = {}

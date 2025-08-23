@@ -502,18 +502,47 @@ SMODS.Joker{
     cost=104,
     config = {
         extra = {
-            mult = 0.05,
+            mult = 1, 
         }
     },
     loc_vars = function(self,info_queue,card)
-        if card.area and card.area ~= G.jokers and SPL.config.show_tooltips then
+        if SPL.config.show_tooltips then
             info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "jamirror",0.5 }}
         end
+        if card.area and card.area ~= G.jokers and SPL.config.show_tooltips then
+            info_queue[#info_queue+1] = {generate_ui = generate_tooltip, key = 'rareplusplus', set="rarity", colour = G.C.RARITY.rarePlusPlus, hasBGColour = true, text_colour = G.C.WHITE}
+        end
+        card.ability.extra.mult = 0.05*#G.playing_cards+1
         return {
             vars = {
                 card.ability.extra.mult 
             }
         }
+    end,
+    add_to_deck = function(self,card,from_debuff)
+        SparkLatro.alwaysCountTED = true
+    end,
+    remove_from_deck = function(self,card,from_debuff)
+        SparkLatro.alwaysCountTED = false
+    end,
+    calculate = function(self,card,context)
+        if context.joker_main then
+            local highlighted = G.hand.highlighted
+            local copied = 0
+            for _, c in ipairs(context.scoring_hand) do
+                local card = copy_card(c)
+				card:add_to_deck()
+				table.insert(G.playing_cards, card)
+                G.hand:emplace(card)
+				playing_card_joker_effects({ card })
+                copied = copied + 1
+            end
+            return {
+                message = "The deck got tricky! (I guess?)",
+                colour = G.C.RARITY.rarePlusPlus,
+                Emult = card.ability.extra.mult
+            }
+        end
     end
 }
 end
