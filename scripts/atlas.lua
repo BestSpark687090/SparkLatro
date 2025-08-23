@@ -103,3 +103,9 @@ SMODS.Atlas{
     px=71,
     py=95
 }
+SMODS.Atlas{
+    key="trick_deck",
+    path="trickdeck.png",
+    px=71,
+    py=95
+}

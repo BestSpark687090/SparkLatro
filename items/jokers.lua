@@ -497,6 +497,8 @@ SMODS.Joker{
 SMODS.Joker{
     key="trick_deck",
     rarity="SPL_rareplusplus",
+    atlas="trick_deck",
+    pos={x=0,y=0},
     cost=104,
     config = {
         extra = {
