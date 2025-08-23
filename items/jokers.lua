@@ -540,7 +540,7 @@ SMODS.Joker{
             return {
                 message = "The deck got tricky! (I guess?)",
                 colour = G.C.RARITY.rarePlusPlus,
-                Emult = card.ability.extra.mult
+                emult = card.ability.extra.mult
             }
         end
     end
