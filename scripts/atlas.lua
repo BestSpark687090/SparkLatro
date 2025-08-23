@@ -97,3 +97,9 @@ SMODS.Atlas{
     atlas_table='ANIMATION_ATLAS',
     py=34,
 }
+SMODS.Atlas{
+    key="upgrade_spectral",
+    path="upgrade.png",
+    px=71,
+    py=95
+}
