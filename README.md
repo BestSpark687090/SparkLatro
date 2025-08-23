@@ -5,8 +5,6 @@ I would love suggestions if possible :)
 ## Current Addition List:
 10 Jokers 
 
-1 Planet + Poker Hand
-
 2 Achievements
 
 1 Deck
@@ -14,3 +12,14 @@ I would love suggestions if possible :)
 3 Rarities
 
 1 Tag
+
+2 Seals
+
+1 Blind
+
+1 Planet Card
+
+1 Poker Hand
+
+3 Spectral Cards
+
