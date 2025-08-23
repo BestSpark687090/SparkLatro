@@ -2,6 +2,7 @@ return {
     misc = {
         dictionary = {
             k_spl_rareplus = "Rare+",
+            k_spl_rareplusplus = "Rare++",
             k_rankup_ex = "Rank Up!",
             k_spl_watermelon = "Watermelon",
             k_spl_hand_entire_deck = "The Entire Deck"
@@ -106,6 +107,15 @@ return {
                 text = {
                     "It's... grass.",
                     "{s:0.5,C:inactive}(This joker only shows up in the collection, just so you can touch grass.)"
+                }
+            },
+            j_SPL_trick_deck = {
+                name = "Trick Deck",
+                text = {
+                    "{X:dark_edition,C:white}^0.05{} Mult and chips for each card in deck.",
+                    "Played hand always counts as The Entire Deck",
+                    "and {C:attention}copies all played cards.",
+                    "{C:inactive}(Currently {X:dark_edition,C:white}^#1#{C:inactive} Mult)"
                 }
             }
         },
@@ -212,6 +222,16 @@ return {
                     "but I decided to keep it in here anyways."
                 }
             },
+            SPL_upgrade_list = {
+                name = "Card Upgrade List",
+                text = {
+                    "Vanilla Blueprint -> Tnirpeulb",
+                    "Vanilla Brainstorm -> Tnirpeulb",
+                    "Draw Full -> Trick Deck",
+                    "Cryptid Effarcire -> Draw Full",
+                    "{s:0.8}(because why not, also Cryptid reference?!?!?!){}"
+                }
+            },
             SPL_sparkstake_sticker = {
                 name = "Spark Stake Sticker",
                 text = {
@@ -228,6 +248,15 @@ return {
                     "They might be better than the",
                     "normal Rare jokers, but you ",
                     "gotta figure that out yourself!"
+                }
+            },
+            rareplusplus = {
+                name = "Rare++",
+                text = {
+                    "Ohohoho! Now this is even better!",
+                    "Rare++ is better than Rare+ AND Rare.",
+                    "I should probably change this name but",
+                    "I honestly don't care. Also, Rare++ is funny.",
                 }
             }
         },

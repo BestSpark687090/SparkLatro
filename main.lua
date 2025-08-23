@@ -35,3 +35,9 @@ SPL.config_tab = SPL.config_file
 G.C.RARITY.rarePlus = HEX("9C2010")
 -- Talisman Support (I'm probably gonna make that a requirement)
 to_big = to_big or function(x) return x end
+SparkLatro.upgrades = { -- make the array of upgrades
+	j_brainstorm = "j_SPL_mrotsniarb", -- Rare > Rare+
+	j_blueprint = "j_SPL_tnirpeulb", -- same ^
+	j_SPL_draw_full = "j_SPL_trick_deck",
+	j_cry_effarcire = "j_SPL_draw_full" -- lets go, cryptid addition baybee
+} 

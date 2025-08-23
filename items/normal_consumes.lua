@@ -128,23 +128,32 @@ SMODS.Consumable{
 	key="upgrade_spectral",
 	set="Spectral",
 	loc_vars = function(self,info_queue,card)
-
+		if SPL.config.show_tooltips then
+            info_queue[#info_queue+1] = {key = 'SPL_upgrade_list', set = 'Other'}
+        end
 	end,
 	can_use = function(self,card,area,copier)
 		-- check if a joker is highlighted
-		for _, value in ipairs(G.hand.highlighted) do
-			if value ~= card then
-				-- i guess this is right?
-				return true
-			end
+		if #G.jokers.highlighted <= 0 then -- why <= ? because i can. maybe something lets you highlight negative jokers?
+			return false
+		end
+		if SparkLatro.upgrades[G.jokers.highlighted[1].config.center_key] then
+			return true
 		end
 	end,
 	use = function(self,card,area,copier)
-		for _, value in ipairs(G.hand.highlighted) do
-			if value ~= card then
-				-- i guess this is right?
-				return true
-			end
+		for _, value in ipairs(G.jokers.highlighted) do
+			G.jokers:remove_card(value)
+			value:remove()
+			value = nil
+			local card = SMODS.create_card({
+				set = "Joker",
+				area = G.jokers,
+				key = "j_SPL_watermelonreactor"
+			})
+			card:add_to_deck()
+			G.jokers:emplace(card)
+			return true
 		end
 	end
 }

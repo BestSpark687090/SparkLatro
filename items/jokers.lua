@@ -2,7 +2,7 @@ if SPL.config.jokers then
 -- Draw Full
 SMODS.Joker{
     key="draw_full",
-    rarity = 3,
+    rarity = "SPL_rareplus",
     atlas="spark",
     pos = { x = 0, y = 0 },
     config = {cards_added = 0, other = {chips_exp = 2,mult_exp = 2}},
@@ -49,17 +49,13 @@ SMODS.Joker{
         end
 	end,
     add_to_deck = function(self,card,from_debuff)
-        if #G.deck.cards == 0 then
-            self.config.cards_added = #G.hand.cards - 5
-        else
-            self.config.cards_added = #G.deck.cards - 5 
-        end
-        SMODS.change_play_limit(self.config.cards_added)
-        SMODS.change_discard_limit(self.config.cards_added)
+        -- you know i feel like this would be better
+        SMODS.change_play_limit(1e6)
+		SMODS.change_discard_limit(1e6)
     end,
     remove_from_deck = function(self,card,from_debuff)
-        SMODS.change_play_limit(-1* self.config.cards_added)
-        SMODS.change_discard_limit(-1*self.config.cards_added)
+        SMODS.change_play_limit(-1e6)
+		SMODS.change_discard_limit(-1e6)
     end
 }
 -- Duck with a Bomb
@@ -488,7 +484,6 @@ SMODS.Joker{
     end,
     add_to_deck = function(self,card,from_debuff)
         G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
-            print("remove me pleaseeee")
             card_eval_status_text(card, 'extra', nil, nil, nil, {message = "Was it just a dream?", colour = G.C.GREEN})
             -- G.jokers:remove_card(card) -- dont.
             card:start_dissolve()
@@ -497,5 +492,26 @@ SMODS.Joker{
         
     end
 }
-
+-- ^0.05 mult and chips for each card in deck, hand always counts as The Entire Deck and copies all played cards
+-- idea by jamirror
+SMODS.Joker{
+    key="trick_deck",
+    rarity="SPL_rareplusplus",
+    cost=104,
+    config = {
+        extra = {
+            mult = 0.05,
+        }
+    },
+    loc_vars = function(self,info_queue,card)
+        if card.area and card.area ~= G.jokers and SPL.config.show_tooltips then
+            info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "jamirror",0.5 }}
+        end
+        return {
+            vars = {
+                card.ability.extra.mult 
+            }
+        }
+    end
+}
 end
