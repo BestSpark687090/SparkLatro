@@ -118,6 +118,15 @@ return {
                     "and {C:attention}copies all played cards.",
                     "{C:inactive}(Currently {X:dark_edition,C:white}^#1#{C:inactive} Mult)"
                 }
+            },
+            j_SPL_peak = {
+                name = 'Peak',
+                text = {
+                    "{C:green}#1# in #2#{} chance to make",
+                    "the {C:attention}Joker{} to the {C:attention}right{} {C:dark_edition,E:1}negative{}",
+                    "at the end of the round",
+                    "{C:inactive}({}{C:green}Probability{} {C:inactive}decreases for each non-negative Joker owned){}",
+                }
             }
         },
         Planet = {

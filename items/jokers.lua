@@ -382,173 +382,246 @@ if SPL.config.jokers then
                     G.E_MANAGER:add_event(Event({trigger="after",delay=0.3,func = function()
                         local _card = G.play.cards[i]
                         _card:flip()
-                        return true end}))
-                        -- This took me forever to figure out. I finally did it! :Yippee:
-                        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.3,func = function()
-                            local _card = G.play.cards[i]
-                            beforeNominal = _card.base.nominal
-                            local success, err = SMODS.modify_rank(_card, 1)
-                            assert(success, "Failed to change card rank: " .. (err or "unknown error"))
-                            afterNominal = _card.base.nominal
-                            _card:juice_up(0.5, 0.5)
-                            play_sound('tarot1')
-                            return true end }))
-                            G.E_MANAGER:add_event(Event({trigger="after",delay=0.3,func = function()
-                                local _card = G.play.cards[i]
-                                _card:flip()
-                                return true end}))
-                            end
-                            return {
-                                message = localize("k_rankup_ex")
-                            }
-                        end
-                    end
+                        return true end
+                    }))
+                    -- This took me forever to figure out. I finally did it! :Yippee:
+                    G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.3,func = function()
+                        local _card = G.play.cards[i]
+                        beforeNominal = _card.base.nominal
+                        local success, err = SMODS.modify_rank(_card, 1)
+                        assert(success, "Failed to change card rank: " .. (err or "unknown error"))
+                        afterNominal = _card.base.nominal
+                        _card:juice_up(0.5, 0.5)
+                        play_sound('tarot1')
+                        return true end 
+                    }))
+                    G.E_MANAGER:add_event(Event({trigger="after",delay=0.3,func = function()
+                        local _card = G.play.cards[i]
+                        _card:flip()
+                        return true end
+                    }))
+                end
+                return {
+                    message = localize("k_rankup_ex")
                 }
-                SMODS.Joker{
-                    key="watermelonreactor",
-                    rarity="SPL_watermelon",
-                    cost=0,
-                    atlas="watermelonreactor",
-                    pos={x=0,y=0},
-                    display_size = { w = 71, h = 71 },
-                    pixel_size = {w=71,h=71},
-                    loc_vars = function(self,info_queue,card)
-                        if card.area and card.area ~= G.jokers and SPL.config.show_tooltips then
-                            info_queue[#info_queue+1] = {key = 'SPL_watermelon_reactor_lore', set = 'Other'}
-                            info_queue[#info_queue+1] = {key = 'SPL_watermelon_reactor_bot_link', set = 'Other'}
-                        end
-                        return {
-                            vars = {
-                                colours = {
-                                    G.C.RED
-                                }
-                            }
-                        }
-                    end,
-                    calculate = function(self,card,context)
-                        if context.joker_main then
-                            return {
-                                message = ":watermelon:",
-                                colour = HEX('00ff00'),
-                                mult = 100,
-                                chips = 100,
-                                x_mult = 100,
-                                x_chips = 100,
-                            }
-                        end
-                    end
-                }
-                
-                SMODS.Joker{
-                    key="ducky",
-                    rarity=4, -- The Legendary Ducky is here!,
-                    cost=10,
-                    atlas="ducky",
-                    blueprint_compat = true,
-                    pos = {x=0,y=0},
-                    soul_pos = {x=1,y=0},
-                    loc_vars = function(self,info_queue,card)
-                        G.ARGS.LOC_COLOURS["Ducky"] = HEX("FFD800")
-                        return {
-                            vars = {
-                                colours = {
-                                    HEX("FFD800")
-                                }
-                            }
-                        }
-                    end,
-                    calculate = function(self,card,context)
-                        if context.joker_main then
-                            return {
-                                message= "h",
-                                colour = HEX("FFD800"),
-                                x_chips = 200,
-                                x_mult = 200,
-                            }
-                        end
-                    end
-                }
-                -- The joker that lets you touch Grass fr fr
-                SMODS.Joker{
-                    key="grass_joker",
-                    rarity=1,
-                    cost=3,
-                    atlas="grass",
-                    no_doe=true, -- i believe this is the right way to disable it from deck of equlibrium
-                    pos={x=0,y=0},
-                    loc_vars = function(self,info_queue,card)
-                        -- yes the variables are not going to be used its fine
-                        check_for_unlock({type="SPL_touch_grass"})
-                    end,
-                    in_pool = function(self,args)
-                        return false, {allow_duplicates = false}
-                    end,
-                    add_to_deck = function(self,card,from_debuff)
-                        G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
-                            card_eval_status_text(card, 'extra', nil, nil, nil, {message = "Was it just a dream?", colour = G.C.GREEN})
-                            -- G.jokers:remove_card(card) -- dont.
-                            card:start_dissolve()
-                            -- card = nil
-                            return true end}))
-                            
-                        end
+            end
+        end
+    }
+    SMODS.Joker{
+        key="watermelonreactor",
+        rarity="SPL_watermelon",
+        cost=0,
+        atlas="watermelonreactor",
+        pos={x=0,y=0},
+        display_size = { w = 71, h = 71 },
+        pixel_size = {w=71,h=71},
+        loc_vars = function(self,info_queue,card)
+            if card.area and card.area ~= G.jokers and SPL.config.show_tooltips then
+                info_queue[#info_queue+1] = {key = 'SPL_watermelon_reactor_lore', set = 'Other'}
+                info_queue[#info_queue+1] = {key = 'SPL_watermelon_reactor_bot_link', set = 'Other'}
+            end
+            return {
+                vars = {
+                    colours = {
+                        G.C.RED
                     }
-                    -- ^0.05 mult and chips for each card in deck, hand always counts as The Entire Deck and copies all played cards
-                    -- idea by jamirror
-                    SMODS.Joker{
-                        key="trick_deck",
-                        rarity="SPL_rareplusplus",
-                        atlas="trick_deck",
-                        blueprint_compat = true,
-                        pos={x=0,y=0},
-                        cost=104,
-                        config = {
-                            extra = {
-                                mult = 1,
-                            }
-                        },
-                        loc_vars = function(self,info_queue,card)
-                            if SPL.config.show_tooltips then
-                                info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "jamirror",0.5 }}
-                            end
-                            if card.area and card.area ~= G.jokers and SPL.config.show_tooltips then
-                                info_queue[#info_queue+1] = {generate_ui = generate_tooltip, key = 'rareplusplus', set="rarity", colour = G.C.RARITY.rarePlusPlus, hasBGColour = true, text_colour = G.C.WHITE}
-                            end
-                            card.ability.extra.mult = 0.05*#G.playing_cards+1
-                            return {
-                                vars = {
-                                    card.ability.extra.mult
-                                }
-                            }
-                        end,
-                        add_to_deck = function(self,card,from_debuff)
-                            SparkLatro.alwaysCountTED = true
-                        end,
-                        remove_from_deck = function(self,card,from_debuff)
-                            SparkLatro.alwaysCountTED = false
-                        end,
-                        calculate = function(self,card,context)
-                            if context.joker_main then
-                                return {
-                                    message = "The deck got tricky! (I guess?)",
-                                    colour = G.C.RARITY.rarePlusPlus,
-                                    emult = card.ability.extra.mult,
-                                    Emult = card.ability.extra.mult, -- Just in case?,
-                                    func = function()
-                                        local highlighted = G.hand.highlighted
-                                        local copied = 0
-                                        for _, c in ipairs(context.scoring_hand) do
-                                            local card = copy_card(c)
-                                            card:add_to_deck()
-                                            table.insert(G.playing_cards, card)
-                                            G.hand:emplace(card)
-                                            playing_card_joker_effects({ card })
-                                            copied = copied + 1
-                                        end
-                                    end
-                                }
-                            end
+                }
+            }
+        end,
+        calculate = function(self,card,context)
+            if context.joker_main then
+                return {
+                    message = ":watermelon:",
+                    colour = HEX('00ff00'),
+                    mult = 100,
+                    chips = 100,
+                    x_mult = 100,
+                    x_chips = 100,
+                }
+            end
+        end
+    }
+    
+    SMODS.Joker{
+        key="ducky",
+        rarity=4, -- The Legendary Ducky is here!,
+        cost=10,
+        atlas="ducky",
+        blueprint_compat = true,
+        pos = {x=0,y=0},
+        soul_pos = {x=1,y=0},
+        loc_vars = function(self,info_queue,card)
+            G.ARGS.LOC_COLOURS["Ducky"] = HEX("FFD800")
+            return {
+                vars = {
+                    colours = {
+                        HEX("FFD800")
+                    }
+                }
+            }
+        end,
+        calculate = function(self,card,context)
+            if context.joker_main then
+                return {
+                    message= "h",
+                    colour = HEX("FFD800"),
+                    x_chips = 200,
+                    x_mult = 200,
+                }
+            end
+        end
+    }
+    -- The joker that lets you touch Grass fr fr
+    SMODS.Joker{
+        key="grass_joker",
+        rarity=1,
+        cost=3,
+        atlas="grass",
+        no_doe=true, -- i believe this is the right way to disable it from deck of equlibrium
+        pos={x=0,y=0},
+        loc_vars = function(self,info_queue,card)
+            -- yes the variables are not going to be used its fine
+            check_for_unlock({type="SPL_touch_grass"})
+        end,
+        in_pool = function(self,args)
+            return false, {allow_duplicates = false}
+        end,
+        add_to_deck = function(self,card,from_debuff)
+            G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = "Was it just a dream?", colour = G.C.GREEN})
+                -- G.jokers:remove_card(card) -- dont.
+                card:start_dissolve()
+                -- card = nil
+                return true end
+            }))
+            
+        end
+    }
+    -- ^0.05 mult and chips for each card in deck, hand always counts as The Entire Deck and copies all played cards
+    -- idea by jamirror
+    SMODS.Joker{
+        key="trick_deck",
+        rarity="SPL_rareplusplus",
+        atlas="trick_deck",
+        blueprint_compat = true,
+        pos={x=0,y=0},
+        cost=104,
+        config = {
+            extra = {
+                mult = 1,
+            }
+        },
+        loc_vars = function(self,info_queue,card)
+            if SPL.config.show_tooltips then
+                info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "jamirror",0.5 }}
+            end
+            if card.area and card.area ~= G.jokers and SPL.config.show_tooltips then
+                info_queue[#info_queue+1] = {generate_ui = generate_tooltip, key = 'rareplusplus', set="rarity", colour = G.C.RARITY.rarePlusPlus, hasBGColour = true, text_colour = G.C.WHITE}
+            end
+            card.ability.extra.mult = 0.05*#G.playing_cards+1
+            return {
+                vars = {
+                    card.ability.extra.mult
+                }
+            }
+        end,
+        add_to_deck = function(self,card,from_debuff)
+            SparkLatro.alwaysCountTED = true
+        end,
+        remove_from_deck = function(self,card,from_debuff)
+            SparkLatro.alwaysCountTED = false
+        end,
+        calculate = function(self,card,context)
+            if context.joker_main then
+                return {
+                    message = "The deck got tricky! (I guess?)",
+                    colour = G.C.RARITY.rarePlusPlus,
+                    emult = card.ability.extra.mult,
+                    Emult = card.ability.extra.mult, -- Just in case?,
+                    func = function()
+                        local highlighted = G.hand.highlighted
+                        local copied = 0
+                        for _, c in ipairs(context.scoring_hand) do
+                            local card = copy_card(c)
+                            card:add_to_deck()
+                            table.insert(G.playing_cards, card)
+                            G.hand:emplace(card)
+                            playing_card_joker_effects({ card })
+                            copied = copied + 1
                         end
+                    end
+                }
+            end
+        end
+    }
+    -- the one from the other collab guy, hurlemort i think
+    SMODS.Joker{
+    key = "peak",
+    config={ extra = { odds = 1 } },
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 1, y = 1 },
+    rarity = 4,
+    cost = 20,
+    blueprint_compat = true,
+    eternal_compat = true,
+    perishable_compat = true,
+    unlocked = true,
+    discovered = true,
+    effect = nil,
+    atlas = 'peak',
+    pools = {["tao_joker_pool_legendary"] = true},
+    loc_vars = function(self, info_queue, card)
+        if not card.edition or (card.edition and not card.edition.negative) then
+            info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+        end
+        if SPL.config.show_tooltips then
+            info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "Hurlemort",0.5 }}
+        end
+        local count = 0
+        for i, v in ipairs(G.jokers.cards) do
+            if not v.edition or (not v.edition.negative) then
+                count = count + 1
+            end
+        end
+        
+        if count>0 then
+            card.ability.extra.odds = count
+        else
+            card.ability.extra.odds = 1
+        end
+        return { vars = {G.GAME.probabilities.normal, card.ability.extra.odds} }
+    end,
+
+    calculate = function(self, card, context)
+        if (context.end_of_round and not context.repetition and not context.individual) and G.GAME.blind then
+            if pseudorandom("peak") < G.GAME.probabilities.normal / card.ability.extra.odds then
+                -- Find self's index
+                local self_index
+                for i, v in ipairs(G.jokers.cards) do
+                    if v == card then
+                        self_index = i
+                        break
+                    end
+                end
+
+                -- Get the joker to the right
+                local right_joker = self_index and G.jokers.cards[self_index + 1] or nil
+                if right_joker and right_joker ~= card then
+                    -- Apply negative edition to the right joker
+                    right_joker:set_edition("e_negative")
+                    return {
+                        message = "Peak",
+                        colour = G.C.DARK_EDITION,
+                        card = right_joker,
                     }
                 end
-                
+            else
+                return {
+                    message = "Nuh uh",
+                    colour = G.C.RED,
+                }
+            end
+        end
+    end,
+}
+end              
