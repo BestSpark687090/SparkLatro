@@ -8,7 +8,7 @@ SPL.save_config = function(self)
 end
 SPL:save_config()
 local playedEntireDeck = false
--- SMODS.Sound.register_global(self)
+-- SMODS.Sound.register_global(SPL)
 local mod_path = "" .. SMODS.current_mod.path
 -- load the scripts folder
 local files = NFS.getDirectoryItems(mod_path .. "scripts")

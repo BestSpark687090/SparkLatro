@@ -274,7 +274,7 @@ return {
                 text = {
                     "The Final Boss of Balatro.",
                     "Chips = Blind scaling of Ante Number^2",
-                    "{s:5,C:attention}Idea by The Waal"
+                    "Idea by The Waal"
                 }
             }
         },
