@@ -18,16 +18,14 @@ SMODS.Joker{
 			if context.first_hand_drawn then
 				G.FUNCS.draw_from_deck_to_hand(#G.deck.cards)
 				return nil, true
-			elseif G.hand.config.card_limit < 1 then
-				G.hand.config.card_limit = 1
-			end
+            end
 		end
         -- if context.joker_main then
         -- if context.before and next(context.poker_hands['entireDeck']) then
         --     playedEntireDeck = true
         -- end
         if context.joker_main then
-            if playedEntireDeck then
+            if playedEntireDeck or SparkLatro.alwaysCountTED then
                 playedEntireDeck = false
                 G.GAME.played_entire_deck = true
                 -- context.mult = context.mult ^ self.config.mult_exp
@@ -444,6 +442,7 @@ SMODS.Joker{
     rarity=4, -- The Legendary Ducky is here!,
     cost=10,
     atlas="ducky",
+    blueprint_compat = true,
     pos = {x=0,y=0},
     soul_pos = {x=1,y=0},
     loc_vars = function(self,info_queue,card)
@@ -540,7 +539,8 @@ SMODS.Joker{
             return {
                 message = "The deck got tricky! (I guess?)",
                 colour = G.C.RARITY.rarePlusPlus,
-                emult = card.ability.extra.mult
+                emult = card.ability.extra.mult,
+                Emult = card.ability.extra.mult -- Just in case?
             }
         end
     end
