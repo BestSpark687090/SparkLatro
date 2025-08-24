@@ -109,3 +109,11 @@ SMODS.Atlas{
     px=71,
     py=95
 }
+SMODS.Atlas{
+    key="theWAAL",
+    path="waal.png",
+    frames=21,
+    px=34,
+    atlas_table='ANIMATION_ATLAS',
+    py=34,
+}

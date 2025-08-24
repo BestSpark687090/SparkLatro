@@ -23,4 +23,30 @@ SMODS.Blind{
         showdown = false,
     }
 }
+SMODS.Blind{
+    key="the_waal",
+    atlas="theWAAL",
+    pos = {y=0},
+    mult = 2,
+    boss_colour = HEX("FF00FF"),
+    ignore_showdown_check = true,
+    set_blind = function(self)
+        G.HUD_blind:get_UIE_by_ID("HUD_blind_name").config.object.colours[1][3]=0
+        G.HUD_blind:get_UIE_by_ID("HUD_blind_name").config.object.colours[1][2]=0
+        local scaling = get_blind_amount(G.GAME.round_resets.ante^2)
+        G.GAME.blind.chips = scaling
+        G.GAME.blind:alert_debuff() -- uhm
+
+    end,
+    defeat = function(self)
+        G.HUD_blind:get_UIE_by_ID("HUD_blind_name").config.object.colours[1][3]=1
+        G.HUD_blind:get_UIE_by_ID("HUD_blind_name").config.object.colours[1][2]=1
+    end,
+    in_pool = function(self)
+        return true -- :P
+    end,
+    boss = {
+        showdown = false,
+    }
+}
 end

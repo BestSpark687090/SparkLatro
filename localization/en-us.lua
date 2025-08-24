@@ -269,6 +269,14 @@ return {
                     "Why not?"
                 }
             },
+            bl_SPL_the_waal = {
+                name = "{s:5,C:attention}The Waal{}",
+                text = {
+                    "The Final Boss of Balatro.",
+                    "Chips = Blind scaling of Ante Number^2",
+                    "{s:5,C:attention}Idea by The Waal"
+                }
+            }
         },
         Stake = {
            stake_SPL_sparkstake={
