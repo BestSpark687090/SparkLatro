@@ -48,3 +48,15 @@ print("[SparkLatro] Injected into Cryptid!")
 Cryptid.edeck_sprites.seal.SPL_ducky_seal = {atlas="SPL_sealspectrals", pos = {x=0,y=0}}
 Cryptid.edeck_sprites.seal.SPL_spark_seal = {atlas="SPL_sealspectrals", pos = {x=0,y=1}}
 '''
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Cryptid "items/exotic.lua"]'
+pattern = "atlas = \"effarcire\","
+match_indent = true
+position = "after"
+# I forget that SparkLatro comes BEFORE Cryptid so I gotta do this instead :/
+payload = '''
+set_badges = function(self,card,badges)
+    badges[#badges+1] = create_badge({localize("k_upgradable"),"+SparkLatro"})
+end,
+'''

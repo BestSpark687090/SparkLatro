@@ -246,6 +246,7 @@ SMODS.Joker{
 			context.blueprint_card = nil
 
 			if other_joker_ret == true then
+                ---@diagnostic disable-next-line: return-type-mismatch
 				return other_joker_ret
 			end
 			if other_joker_ret or trig then
@@ -347,6 +348,7 @@ SMODS.Joker{
 			context.blueprint_card = nil
 
 			if other_joker_ret == true then
+---@diagnostic disable-next-line: return-type-mismatch
 				return other_joker_ret
 			end
 			if other_joker_ret or trig then

@@ -5,7 +5,8 @@ return {
             k_spl_rareplusplus = "Rare++",
             k_rankup_ex = "Rank Up!",
             k_spl_watermelon = "Watermelon",
-            k_spl_hand_entire_deck = "The Entire Deck"
+            k_spl_hand_entire_deck = "The Entire Deck",
+            k_upgradable = "Upgradable",
         },
         labels = {
             spl_spark_seal_seal = "Spark Seal",

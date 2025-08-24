@@ -18,6 +18,9 @@ for _, file in ipairs(files) do
 	if err then
 		error(err)
 	end
+	if f == nil then
+		error("hm somehow the file is nil?")
+	end
     f()
 end
 -- load the items folder
@@ -27,6 +30,9 @@ for _, file in ipairs(files) do
 	local f, err = SMODS.load_file("items/" .. file)
 	if err then
 		error(err)
+	end
+	if f == nil then
+		error("hm somehow the file is nil?")
 	end
     f()
 end

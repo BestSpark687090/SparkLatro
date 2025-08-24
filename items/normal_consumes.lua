@@ -133,7 +133,7 @@ SMODS.Consumable{
 			info_queue[#info_queue+1] = {key = 'SPL_upgrade_list', set = 'Other'}
 		end
 	end,
-	can_use = function(self,card,area,copier)
+	can_use = function(self,card)
 		-- check if a joker is highlighted
 		if #G.jokers.highlighted <= 0 then -- why <= ? because i can. maybe something lets you highlight negative jokers?
 			return false
@@ -154,7 +154,6 @@ SMODS.Consumable{
 		G.jokers:remove_card(value)
 		value:remove()
 		value = nil
-		return true
 	end
 }
 end
