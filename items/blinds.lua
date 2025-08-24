@@ -31,6 +31,7 @@ SMODS.Blind{
     boss_colour = HEX("FF00FF"),
     ignore_showdown_check = true,
     set_blind = function(self)
+        -- Get REDDENED.
         G.HUD_blind:get_UIE_by_ID("HUD_blind_name").config.object.colours[1][3]=0
         G.HUD_blind:get_UIE_by_ID("HUD_blind_name").config.object.colours[1][2]=0
         local scaling = get_blind_amount(G.GAME.round_resets.ante^2)
@@ -39,6 +40,7 @@ SMODS.Blind{
 
     end,
     defeat = function(self)
+        -- aw man you defeated me now i gotta get unred :(
         G.HUD_blind:get_UIE_by_ID("HUD_blind_name").config.object.colours[1][3]=1
         G.HUD_blind:get_UIE_by_ID("HUD_blind_name").config.object.colours[1][2]=1
     end,
