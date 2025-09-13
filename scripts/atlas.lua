@@ -117,3 +117,9 @@ SMODS.Atlas{
     atlas_table='ANIMATION_ATLAS',
     py=34,
 }
+SMODS.Atlas{
+    key="peak_atlas",
+    path="peak.png",
+    px=71,
+    py=95,
+}

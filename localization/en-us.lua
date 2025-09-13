@@ -93,7 +93,8 @@ return {
                     "{s:2,B:1,C:green,E:1}Watermelon Reactor!",
                     "{C:inactive}(Gives +100 Chips and Mult,",
                     "{C:inactive}and also x100 Chips and Mult.)",
-                    "{s:0.5,C:inactive}Why that much? Because why not!!"
+                    "{s:0.5,C:inactive}Why that much? Because why not!!",
+                    "{f:spl_emoji}🍉{f:SPL_emoji}🍉"
                 }
             },
             j_SPL_ducky = {
@@ -125,7 +126,8 @@ return {
                     "{C:green}#1# in #2#{} chance to make",
                     "the {C:attention}Joker{} to the {C:attention}right{} {C:dark_edition,E:1}negative{}",
                     "at the end of the round",
-                    "{C:inactive}({}{C:green}Probability{} {C:inactive}decreases for each non-negative Joker owned){}",
+                    "{C:inactive}({}{C:green}Probability{} {C:inactive}decreases for each{}",
+                    "{C:inactive}non-negative Joker owned){}",
                 }
             }
         },

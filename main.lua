@@ -48,3 +48,14 @@ SparkLatro.upgrades = { -- make the array of upgrades
 	j_SPL_draw_full = "j_SPL_trick_deck",
 	j_cry_effarcire = "j_SPL_draw_full" -- lets go, cryptid addition baybee
 } 
+-- so i found this out...
+SMODS.Font{
+	key="emoji",
+	path="emoji.ttf",
+	render_scale = 95,
+    TEXT_HEIGHT_SCALE = 1,
+    TEXT_OFFSET = { x = 10, y = -17 },
+    FONTSCALE = 0.15,
+    squish = 1,
+    DESCSCALE = 1
+}

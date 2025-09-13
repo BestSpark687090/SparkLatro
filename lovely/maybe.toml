@@ -60,3 +60,12 @@ set_badges = function(self,card,badges)
     badges[#badges+1] = create_badge({localize("k_upgradable"),"+SparkLatro"})
 end,
 '''
+# A man needs his fonts anywhere, my guy
+# Well, not anywhere, but you know what I mean
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern="{n=G.UIT.O, config={draw_layer = 1, object = DynaText({scale = args.scale, string = args.text, maxw = args.maxw, colours = {args.colour},float = true, shadow = true, silent = not args.noisy, args.scale, pop_in = 0, pop_in_rate = 6, rotate = args.rotate or nil})}},"
+match_indent=true
+position="at"
+payload="{n=G.UIT.O, config={draw_layer = 1, object = DynaText({scale = args.scale, string = args.text, maxw = args.maxw, colours = {args.colour},float = true, shadow = true, silent = not args.noisy, args.scale, pop_in = 0, pop_in_rate = 6, rotate = args.rotate or nil, font = args.font or nil})}},"

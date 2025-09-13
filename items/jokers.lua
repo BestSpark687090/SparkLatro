@@ -430,9 +430,19 @@ if SPL.config.jokers then
         end,
         calculate = function(self,card,context)
             if context.joker_main then
+                G.E_MANAGER:add_event(Event({
+                func = (function()
+                    local text = "🍉"
+                    play_sound('gong', 0.94, 0.3)
+                    play_sound('gong', 0.94*1.5, 0.2)
+                    play_sound('tarot1', 1.5)
+                    attention_text({
+                        scale = 1.4, text = text, hold = 2, align = 'cm', offset = {x = 0,y = -2.7},major = G.play,font=SMODS.Fonts["SPL_emoji"]
+                    })
+                    return true
+                    end)
+                }))
                 return {
-                    message = ":watermelon:",
-                    colour = HEX('00ff00'),
                     mult = 100,
                     chips = 100,
                     x_mult = 100,
@@ -556,72 +566,68 @@ if SPL.config.jokers then
     }
     -- the one from the other collab guy, hurlemort i think
     SMODS.Joker{
-    key = "peak",
-    config={ extra = { odds = 1 } },
-    pos = { x = 0, y = 0 },
-    soul_pos = { x = 1, y = 1 },
-    rarity = 4,
-    cost = 20,
-    blueprint_compat = true,
-    eternal_compat = true,
-    perishable_compat = true,
-    unlocked = true,
-    discovered = true,
-    effect = nil,
-    atlas = 'peak',
-    pools = {["tao_joker_pool_legendary"] = true},
-    loc_vars = function(self, info_queue, card)
-        if not card.edition or (card.edition and not card.edition.negative) then
-            info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
-        end
-        if SPL.config.show_tooltips then
-            info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "Hurlemort",0.5 }}
-        end
-        local count = 0
-        for i, v in ipairs(G.jokers.cards) do
-            if not v.edition or (not v.edition.negative) then
-                count = count + 1
+        key = "peak",
+        config={ extra = { odds = 4 } },
+        pos = { x = 0, y = 0 },
+        soul_pos = { x = 1, y = 0 },
+        rarity = 4,
+        cost = 20,
+        blueprint_compat = true,
+        eternal_compat = true,
+        perishable_compat = true,
+        unlocked = true,
+        discovered = true,
+        effect = nil,
+        atlas = 'peak_atlas',
+        pools = {["tao_joker_pool_legendary"] = true},
+        loc_vars = function(self, info_queue, card)
+            if not card.edition or (card.edition and not card.edition.negative) then
+                info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
             end
-        end
-        
-        if count>0 then
-            card.ability.extra.odds = count
-        else
-            card.ability.extra.odds = 1
-        end
-        return { vars = {G.GAME.probabilities.normal, card.ability.extra.odds} }
-    end,
-
-    calculate = function(self, card, context)
-        if (context.end_of_round and not context.repetition and not context.individual) and G.GAME.blind then
-            if pseudorandom("peak") < G.GAME.probabilities.normal / card.ability.extra.odds then
-                -- Find self's index
-                local self_index
+            local count = 0
+            if G.jokers and G.jokers.card then
                 for i, v in ipairs(G.jokers.cards) do
-                    if v == card then
-                        self_index = i
-                        break
+                    if not v.edition or (not v.edition.negative) then
+                        count = count + 1
                     end
                 end
+                card.ability.extra.odds = count
+            else
+                card.ability.extra.odds = 1
+            end
+            return { vars = {G.GAME.probabilities.normal, card.ability.extra.odds} }
+        end,
 
-                -- Get the joker to the right
-                local right_joker = self_index and G.jokers.cards[self_index + 1] or nil
-                if right_joker and right_joker ~= card then
-                    -- Apply negative edition to the right joker
-                    right_joker:set_edition("e_negative")
+        calculate = function(self, card, context)
+            if (context.end_of_round and not context.repetition and not context.individual) and G.GAME.blind then
+                if pseudorandom("peak") < G.GAME.probabilities.normal / card.ability.extra.odds then
+                    -- Find self's index
+                    local self_index
+                    for i, v in ipairs(G.jokers.cards) do
+                        if v == card then
+                            self_index = i
+                            break
+                        end
+                    end
+
+                    -- Get the joker to the right
+                    local right_joker = self_index and G.jokers.cards[self_index + 1] or nil
+                    if right_joker and right_joker ~= card then
+                        -- Apply negative edition to the right joker
+                        right_joker:set_edition("e_negative")
+                        return {
+                            message = "Peak Fiction",
+                            colour = G.C.DARK_EDITION,
+                            card = right_joker,
+                        }
+                    end
+                else
                     return {
-                        message = "Peak",
-                        colour = G.C.DARK_EDITION,
-                        card = right_joker,
+                        message = "Nuh uh!",
+                        colour = G.C.RED,
                     }
                 end
-            else
-                return {
-                    message = "Nuh uh",
-                    colour = G.C.RED,
-                }
             end
-        end
-    end,
-}
+        end,
+    }
 end              
