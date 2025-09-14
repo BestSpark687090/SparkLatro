@@ -21,7 +21,7 @@ SMODS.Achievement{
     atlas="achieve",
     -- hidden_text = true,
     reset_on_startup = true,
-     -- TODO: remove `reset_on_startup` once you've actually finished the mod lol
+    -- TODO: remove `reset_on_startup` once you've actually finished the mod lol
     pos={x=1,y=0},
     hidden_pos={x=0,y=0},
     bypass_all_unlocked = true,

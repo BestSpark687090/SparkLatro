@@ -181,27 +181,27 @@ SMODS.Seal{
             if legendarycheck == 1 then
                 return {
                     G.E_MANAGER:add_event(Event({func = function()
-                    play_sound("polychrome1")
-                    local card = create_card("Joker",G.jokers,true,4,nil,nil,"j_SPL_ducky","SPL_ducky_seal")
-                    card:add_to_deck()
-					card:start_materialize()
-					G.jokers:emplace(card)
-                    return true end})),
-                    message = "You got the Ducky!!",
-                    colour = HEX("FFD800"),
-                    mult = self.config.extra.plus_mult_when_legendary,
-                    xmult = self.config.extra.x_mult_when_legendary
-                }
+                        play_sound("polychrome1")
+                        local card = create_card("Joker",G.jokers,true,4,nil,nil,"j_SPL_ducky","SPL_ducky_seal")
+                        card:add_to_deck()
+                        card:start_materialize()
+                        G.jokers:emplace(card)
+                        return true end})),
+                        message = "You got the Ducky!!",
+                        colour = HEX("FFD800"),
+                        mult = self.config.extra.plus_mult_when_legendary,
+                        xmult = self.config.extra.x_mult_when_legendary
+                    }
+                end
+                return {
+                    G.E_MANAGER:add_event(Event({func = function()
+                        play_sound('SPL_ducky_sealsfx')
+                        return true end })),
+                        message = "Ducky!!!",
+                        colour = HEX("FFD800"),
+                        mult = self.config.extra.plus_mult,
+                        xmult = self.config.extra.x_mult
+                    }
+                end
             end
-            return {
-                G.E_MANAGER:add_event(Event({func = function()
-                play_sound('SPL_ducky_sealsfx')
-                return true end })),
-                message = "Ducky!!!",
-                colour = HEX("FFD800"),
-                mult = self.config.extra.plus_mult,
-                xmult = self.config.extra.x_mult
-            }
-        end
-    end
-}
+        }
