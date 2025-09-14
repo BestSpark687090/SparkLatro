@@ -94,7 +94,7 @@ return {
                     "{C:inactive}(Gives +100 Chips and Mult,",
                     "{C:inactive}and also x100 Chips and Mult.)",
                     "{s:0.5,C:inactive}Why that much? Because why not!!",
-                    "{f:spl_emoji}🍉{f:SPL_emoji}🍉"
+                    "{f:SPL_emoji}🍉"
                 }
             },
             j_SPL_ducky = {

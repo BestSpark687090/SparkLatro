@@ -1,6 +1,8 @@
 if SPL.config.jokers then
     -- Draw Full
     SMODS.Joker{
+        discovered = true,
+        unlocked = true,
         key="draw_full",
         rarity = "SPL_rareplus",
         atlas="spark",
@@ -58,6 +60,8 @@ if SPL.config.jokers then
     }
     -- Duck with a Bomb
     SMODS.Joker{
+        discovered = true,
+        unlocked = true,
         key="duck_bomb",
         rarity = 2,
         -- Localization's in the en-us.lua script. Figured it out :)
@@ -125,6 +129,8 @@ if SPL.config.jokers then
     }
     -- Jester's Regret
     SMODS.Joker{
+        discovered = true,
+        unlocked = true,
         key="jesters_regret",
         rarity=1,
         cost=2,
@@ -158,6 +164,8 @@ if SPL.config.jokers then
     }
     -- backwards blueprint (tnirpeulb)
     SMODS.Joker{
+        discovered = true,
+        unlocked = true,
         key="tnirpeulb",
         rarity="SPL_rareplus",
         -- rarity=3,
@@ -263,6 +271,8 @@ if SPL.config.jokers then
     }
     -- Reverse Brainstorm (Mrotsniarb)
     SMODS.Joker{
+        discovered = true,
+        unlocked = true,
         key="mrotsniarb",
         rarity="SPL_rareplus",
         cost=5,
@@ -365,6 +375,8 @@ if SPL.config.jokers then
     }
     --Chutes and Ladders
     SMODS.Joker{
+        discovered = true,
+        unlocked = true,
         key="chutesandladders",
         rarity = 2,
         cost = 5,
@@ -408,6 +420,8 @@ if SPL.config.jokers then
         end
     }
     SMODS.Joker{
+        discovered = true,
+        unlocked = true,
         key="watermelonreactor",
         rarity="SPL_watermelon",
         cost=0,
@@ -431,15 +445,15 @@ if SPL.config.jokers then
         calculate = function(self,card,context)
             if context.joker_main then
                 G.E_MANAGER:add_event(Event({
-                func = (function()
-                    local text = "🍉"
-                    play_sound('gong', 0.94, 0.3)
-                    play_sound('gong', 0.94*1.5, 0.2)
-                    play_sound('tarot1', 1.5)
-                    attention_text({
-                        scale = 1.4, text = text, hold = 2, align = 'cm', offset = {x = 0,y = -2.7},major = G.play,font=SMODS.Fonts["SPL_emoji"]
-                    })
-                    return true
+                    func = (function()
+                        local text = "🍉"
+                        play_sound('gong', 0.94, 0.3)
+                        play_sound('gong', 0.94*1.5, 0.2)
+                        play_sound('tarot1', 1.5)
+                        attention_text({
+                            scale = 1.4, text = text, hold = 2, align = 'cm', offset = {x = 0,y = -2.7},major = G.play,font=SMODS.Fonts["SPL_emoji"]
+                        })
+                        return true
                     end)
                 }))
                 return {
@@ -453,6 +467,8 @@ if SPL.config.jokers then
     }
     
     SMODS.Joker{
+        discovered = true,
+        unlocked = true,
         key="ducky",
         rarity=4, -- The Legendary Ducky is here!,
         cost=10,
@@ -483,6 +499,8 @@ if SPL.config.jokers then
     }
     -- The joker that lets you touch Grass fr fr
     SMODS.Joker{
+        discovered = true,
+        unlocked = true,
         key="grass_joker",
         rarity=1,
         cost=3,
@@ -510,6 +528,8 @@ if SPL.config.jokers then
     -- ^0.05 mult and chips for each card in deck, hand always counts as The Entire Deck and copies all played cards
     -- idea by jamirror
     SMODS.Joker{
+        discovered = true,
+        unlocked = true,
         key="trick_deck",
         rarity="SPL_rareplusplus",
         atlas="trick_deck",
@@ -566,6 +586,8 @@ if SPL.config.jokers then
     }
     -- the one from the other collab guy, hurlemort i think
     SMODS.Joker{
+        discovered = true,
+        unlocked = true,
         key = "peak",
         config={ extra = { odds = 4 } },
         pos = { x = 0, y = 0 },
@@ -575,8 +597,6 @@ if SPL.config.jokers then
         blueprint_compat = true,
         eternal_compat = true,
         perishable_compat = true,
-        unlocked = true,
-        discovered = true,
         effect = nil,
         atlas = 'peak_atlas',
         pools = {["tao_joker_pool_legendary"] = true},
@@ -597,7 +617,7 @@ if SPL.config.jokers then
             end
             return { vars = {G.GAME.probabilities.normal, card.ability.extra.odds} }
         end,
-
+        
         calculate = function(self, card, context)
             if (context.end_of_round and not context.repetition and not context.individual) and G.GAME.blind then
                 if pseudorandom("peak") < G.GAME.probabilities.normal / card.ability.extra.odds then
@@ -609,7 +629,7 @@ if SPL.config.jokers then
                             break
                         end
                     end
-
+                    
                     -- Get the joker to the right
                     local right_joker = self_index and G.jokers.cards[self_index + 1] or nil
                     if right_joker and right_joker ~= card then

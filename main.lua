@@ -56,7 +56,7 @@ SparkLatro.upgrades = { -- make the array of upgrades
 	j_blueprint = "j_SPL_tnirpeulb", -- same ^
 	j_SPL_draw_full = "j_SPL_trick_deck",
 	j_cry_effarcire = "j_SPL_draw_full" -- lets go, cryptid addition baybee
-} 
+}
 -- so i found this out...
 SMODS.Font{
 	key="emoji",
