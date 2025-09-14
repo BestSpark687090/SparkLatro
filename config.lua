@@ -7,5 +7,5 @@ return {
     seals = true,
     custom_consumables = true,
     blinds = true,
-    stakes = true,
+    stakes = false,
 }

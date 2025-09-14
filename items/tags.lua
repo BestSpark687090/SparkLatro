@@ -1,5 +1,5 @@
-SparkLatro.Tag = {}
-SparkLatro.Tag.SkullUsed = false
+G.GAME = {}
+G.GAME.SkullUsed = false
 SMODS.Tag{
     key="skull",
     atlas="skull",
@@ -18,12 +18,12 @@ SMODS.Tag{
         return true,{allow_duplicates = false}
     end,
     apply = function(self,tag,context)
-        if SparkLatro.Tag.SkullUsed then
+        if G.GAME.SkullUsed then
             return false
         end
         tag:yep("Good luck!",HEX("ff0000"),function()
             print("Trigger")
-            SparkLatro.Tag.SkullUsed = true
+            G.GAME.SkullUsed = true
             G.GAME.round_resets.ante = 39  -- setting this just in case :P
             return true
         end)

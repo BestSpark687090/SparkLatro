@@ -1,4 +1,4 @@
-local ownerships = {"blueprint","brainstorm","draw_full"}
+local ownerships = {"blueprint","brainstorm","SPL_draw_full"}
 -- Effarcire is loaded AFTER SparkLatro so I can't take ownership yet...
 -- honestly im too lazy to go back and put the other badges in so what im gonna do is put them here
 for i, key in ipairs(ownerships) do
