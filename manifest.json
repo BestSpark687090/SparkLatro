@@ -1,0 +1,15 @@
+{
+    "id":"SparkLatro",
+    "author":["BestSpark687090"],
+    "name":"SparkLatro",
+    "description": "I have no clue.",
+    "badge_colour":"ff0000",
+    "badge_text_colour":"00ff00",
+    "prefix":"SPL",
+    "version":"1.0.0",
+    "main_file":"main.lua",
+    "dependencies": [
+        "Steamodded (>=1.0.0~BETA-0404a)",
+        "Talisman (>=2.1.0a)"
+    ]
+}
