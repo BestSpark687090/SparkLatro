@@ -4,7 +4,7 @@ if SPL.config.blinds then
         atlas = "sparkblindimg",
         pos = { y = 0 },
         boss_colour = HEX('FE8653'),
-        mult = 0, -- Dude, this is an insta-win blind, why can't i do this?
+        mult = 0,                     -- Dude, this is an insta-win blind, why can't i do this?
         ignore_showdown_check = true, -- Heheheha!
         drawn_to_hand = function(self)
             -- pulled straight from debugplus - thanks :)
@@ -23,7 +23,7 @@ if SPL.config.blinds then
             showdown = false,
         }
     }
-    
+
     -- NUH UH thanos sfx
     SMODS.Sound {
         key = "nuh_uh",
@@ -32,7 +32,7 @@ if SPL.config.blinds then
         volume = 1,
         sync = false
     }
-    
+
     SMODS.Blind {
         key = "the_waal",
         atlas = "theWAAL",

@@ -1,4 +1,4 @@
-if not SparkLatro then 
+if not SparkLatro then
 	SparkLatro = {}
 end
 SparkLatro.ModID = SMODS.current_mod
@@ -51,16 +51,16 @@ G.C.RARITY.rarePlus = HEX("9C2010")
 G.C.RARITY.rarePlusPlus = HEX("FF0000")
 -- Talisman Support (I'm probably gonna make that a requirement)
 to_big = to_big or function(x) return x end
-SparkLatro.upgrades = { -- make the array of upgrades
-j_brainstorm = "j_SPL_mrotsniarb", -- Rare > Rare+
-j_blueprint = "j_SPL_tnirpeulb", -- same ^
-j_SPL_draw_full = "j_SPL_trick_deck",
-j_cry_effarcire = "j_SPL_draw_full" -- lets go, cryptid addition baybee
+SparkLatro.upgrades = {              -- make the array of upgrades
+	j_brainstorm = "j_SPL_mrotsniarb", -- Rare > Rare+
+	j_blueprint = "j_SPL_tnirpeulb", -- same ^
+	j_SPL_draw_full = "j_SPL_trick_deck",
+	j_cry_effarcire = "j_SPL_draw_full" -- lets go, cryptid addition baybee
 }
 -- so i found this out...
-SMODS.Font{
-	key="emoji",
-	path="emoji.ttf",
+SMODS.Font {
+	key = "emoji",
+	path = "emoji.ttf",
 	render_scale = 95,
 	TEXT_HEIGHT_SCALE = 1,
 	TEXT_OFFSET = { x = 10, y = -17 },

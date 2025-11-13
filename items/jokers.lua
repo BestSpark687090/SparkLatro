@@ -548,7 +548,11 @@ if SPL.config.jokers then
             if card.area and card.area ~= G.jokers and SPL.config.show_tooltips then
                 info_queue[#info_queue+1] = {generate_ui = generate_tooltip, key = 'rareplusplus', set="rarity", colour = G.C.RARITY.rarePlusPlus, hasBGColour = true, text_colour = G.C.WHITE}
             end
-            card.ability.extra.mult = 0.05*#G.playing_cards+1
+            if G.playing_cards == nil then
+                card.ability.extra.mult = 0.05*52+1
+            else
+                card.ability.extra.mult = 0.05*#G.playing_cards+1
+            end
             return {
                 vars = {
                     card.ability.extra.mult
@@ -601,6 +605,9 @@ if SPL.config.jokers then
         atlas = 'peak_atlas',
         pools = {["tao_joker_pool_legendary"] = true},
         loc_vars = function(self, info_queue, card)
+            if SPL.config.show_tooltips then
+                info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "Hurlemort",0.5 }}
+            end
             if not card.edition or (card.edition and not card.edition.negative) then
                 info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
             end
