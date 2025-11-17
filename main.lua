@@ -61,10 +61,20 @@ SparkLatro.upgrades = {              -- make the array of upgrades
 SMODS.Font {
 	key = "emoji",
 	path = "emoji.ttf",
-	render_scale = 95,
+	render_scale = 100,
 	TEXT_HEIGHT_SCALE = 1,
 	TEXT_OFFSET = { x = 10, y = -17 },
 	FONTSCALE = 0.15,
-	squish = 1,
-	DESCSCALE = 1
+	-- squish = 1,
+	DESCSCALE = 1.5
+}
+SMODS.Font {
+	key = "sans",
+	path = "sans.ttf",
+	render_scale = 64,
+	TEXT_HEIGHT_SCALE = 1,
+	TEXT_OFFSET = { x = 0, y = 0 },
+	FONTSCALE = 0.2,
+	-- squish = 1,
+	DESCSCALE = 2
 }

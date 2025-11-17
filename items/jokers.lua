@@ -1,19 +1,19 @@
 if SPL.config.jokers then
     -- Draw Full
-    SMODS.Joker{
+    SMODS.Joker {
         discovered = true,
         unlocked = true,
-        key="draw_full",
+        key = "draw_full",
         rarity = "SPL_rareplus",
-        atlas="spark",
+        atlas = "spark",
         pos = { x = 0, y = 0 },
-        config = {cards_added = 0, other = {chips_exp = 2,mult_exp = 2}},
+        config = { cards_added = 0, other = { chips_exp = 2, mult_exp = 2 } },
         cost = 52,
         loc_vars = function(self, info_queue, card)
             if card.area and card.area ~= G.jokers and SPL.config.show_tooltips then
-                info_queue[#info_queue+1] = {key = "SPL_draw_full_placeholder", set="Other"}
+                info_queue[#info_queue + 1] = { key = "SPL_draw_full_placeholder", set = "Other" }
             end
-            return { vars = {self.config.chips_exp, self.config.mult_exp } }
+            return { vars = { self.config.chips_exp, self.config.mult_exp } }
         end,
         calculate = function(self, card, context)
             if not context.blueprint and not context.retrigger_joker then
@@ -34,51 +34,50 @@ if SPL.config.jokers then
                     -- context.chips = context.chips ^ self.config.chips_exp
                     self.config.chips_exp = 2
                     self.config.mult_exp = 2
-                    return{
-                        message="^2 Mult and ^2 Chips!!",
+                    return {
+                        message = "^2 Mult and ^2 Chips!!",
                         Echip_mod = self.config.chips_exp,
                         Emult_mod = self.config.mult_exp
                     }
                 else
                     playedEntireDeck = false
                 end
-                return{
-                    message="Nope!"
+                return {
+                    message = "Nope!"
                 }
-                
             end
         end,
-        add_to_deck = function(self,card,from_debuff)
+        add_to_deck = function(self, card, from_debuff)
             -- you know i feel like this would be better
             SMODS.change_play_limit(1e6)
             SMODS.change_discard_limit(1e6)
         end,
-        remove_from_deck = function(self,card,from_debuff)
+        remove_from_deck = function(self, card, from_debuff)
             SMODS.change_play_limit(-1e6)
             SMODS.change_discard_limit(-1e6)
         end
     }
     -- Duck with a Bomb
-    SMODS.Joker{
+    SMODS.Joker {
         discovered = true,
         unlocked = true,
-        key="duck_bomb",
+        key = "duck_bomb",
         rarity = 2,
         -- Localization's in the en-us.lua script. Figured it out :)
         cost = 5,
-        atlas="duckbomb",
-        pos = {x=0,y=0},
-        blueprint_compat=false,
-        eternal_compat=false,
-        perishable_compat=false,
+        atlas = "duckbomb",
+        pos = { x = 0, y = 0 },
+        blueprint_compat = false,
+        eternal_compat = false,
+        perishable_compat = false,
         config = {
             extra = {
                 rounds = 3
             }
         },
-        loc_vars = function(self,info_queue,card)
+        loc_vars = function(self, info_queue, card)
             if SPL.config.show_tooltips then
-                info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "Javapeoplebelike and tacovr123",0.7 }}
+                info_queue[#info_queue + 1] = { key = 'SPL_ideaby', set = 'Other', vars = { "Javapeoplebelike and tacovr123", 0.7 } }
             end
             local dangerRound = G.C.TEXT_DARK
             if card.ability.extra.rounds == 1 then dangerRound = G.C.RED end
@@ -92,7 +91,7 @@ if SPL.config.jokers then
                 }
             }
         end,
-        calculate = function(self,card,context)
+        calculate = function(self, card, context)
             if context.end_of_round and context.cardarea == G.jokers then
                 card.ability.extra.rounds = card.ability.extra.rounds - 1
                 if card.ability.extra.rounds == 0 then
@@ -104,22 +103,22 @@ if SPL.config.jokers then
                     end
                     if jok_id ~= 1 then -- check if it isnt the first one in the jokers
                         print("Is not the first Joker")
-                        G.jokers.cards[jok_id-1]:start_dissolve()
-                        G.jokers.cards[jok_id-1] = nil
+                        G.jokers.cards[jok_id - 1]:start_dissolve()
+                        G.jokers.cards[jok_id - 1] = nil
                     end
                     if jok_id ~= #G.jokers.cards then -- check if it isnt the last joker
                         print("Is not the last Joker")
                         print(G.jokers.cards)
-                        G.jokers.cards[jok_id+1]:start_dissolve()
-                        G.jokers.cards[jok_id+1] = nil
+                        G.jokers.cards[jok_id + 1]:start_dissolve()
+                        G.jokers.cards[jok_id + 1] = nil
                     end
                     -- then we remove us
                     G.jokers:remove_card(card)
                     card:remove()
                     card = nil
                     return {
-                        message="kaboom",
-                        colour=G.C.RED
+                        message = "kaboom",
+                        colour = G.C.RED
                     }
                 elseif card.ability.extra.rounds < 0 then
                     error("this isn't supposed to happen. caused by j_spl_duck_bomb") -- lets go that actually works
@@ -128,12 +127,12 @@ if SPL.config.jokers then
         end
     }
     -- Jester's Regret
-    SMODS.Joker{
+    SMODS.Joker {
         discovered = true,
         unlocked = true,
-        key="jesters_regret",
-        rarity=1,
-        cost=2,
+        key = "jesters_regret",
+        rarity = 1,
+        cost = 2,
         blueprint_compat = true,
         config = {
             extra = {
@@ -141,10 +140,10 @@ if SPL.config.jokers then
                 mult = 77,
             }
         },
-        atlas="jestersregret",
-        loc_vars = function(self,info_queue,card)
+        atlas = "jestersregret",
+        loc_vars = function(self, info_queue, card)
             if SPL.config.show_tooltips then
-                info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "!TingTummyTrouble",0.5 }}
+                info_queue[#info_queue + 1] = { key = 'SPL_ideaby', set = 'Other', vars = { "!TingTummyTrouble", 0.5 } }
             end
             return {
                 vars = {
@@ -153,7 +152,7 @@ if SPL.config.jokers then
                 }
             }
         end,
-        calculate = function(self,card,context)
+        calculate = function(self, card, context)
             if context.joker_main then
                 return {
                     chips = card.ability.extra.chips,
@@ -163,16 +162,16 @@ if SPL.config.jokers then
         end
     }
     -- backwards blueprint (tnirpeulb)
-    SMODS.Joker{
+    SMODS.Joker {
         discovered = true,
         unlocked = true,
-        key="tnirpeulb",
-        rarity="SPL_rareplus",
+        key = "tnirpeulb",
+        rarity = "SPL_rareplus",
         -- rarity=3,
-        cost=5,
-        atlas="tnirpeulb",
-        pos={x=0,y=0},
-        blueprint_compat=true, -- thankfully it doesnt do inf retriggers ig
+        cost = 5,
+        atlas = "tnirpeulb",
+        pos = { x = 0, y = 0 },
+        blueprint_compat = true, -- thankfully it doesnt do inf retriggers ig
         -- taken from cryptid, modified one character :P
         update = function(self, card, front)
             if G.STAGE == G.STAGES.RUN then
@@ -193,7 +192,15 @@ if SPL.config.jokers then
         -- same with this, but removed the vars since it doesnt need any
         loc_vars = function(self, info_queue, card)
             if card.area and card.area ~= G.jokers and SPL.config.show_tooltips then
-                info_queue[#info_queue+1] = {generate_ui = generate_tooltip, key = 'rareplus', set="rarity", colour = G.C.RARITY.rarePlus, hasBGColour = true, text_colour = G.C.WHITE}
+                info_queue[#info_queue + 1] = {
+                    generate_ui = generate_tooltip,
+                    key = 'rareplus',
+                    set = "rarity",
+                    colour =
+                        G.C.RARITY.rarePlus,
+                    hasBGColour = true,
+                    text_colour = G.C.WHITE
+                }
             end
             card.ability.blueprint_compat_ui = card.ability.blueprint_compat_ui
             card.ability.blueprint_compat_check = nil
@@ -232,7 +239,7 @@ if SPL.config.jokers then
                 } or nil,
             }
         end,
-        calculate = function(self,card,context)
+        calculate = function(self, card, context)
             local other_joker = nil
             for i = 1, #G.jokers.cards do
                 if G.jokers.cards[i] == card then
@@ -242,17 +249,17 @@ if SPL.config.jokers then
             if other_joker and other_joker ~= card then
                 context.blueprint = (context.blueprint and (context.blueprint + 1)) or 1
                 context.blueprint_card = context.blueprint_card or card
-                
+
                 if context.blueprint > #G.jokers.cards + 1 then
                     return
                 end
-                
+
                 local other_joker_ret, trig = other_joker:calculate_joker(context)
                 local eff_card = context.blueprint_card or card
-                
+
                 context.blueprint = nil
                 context.blueprint_card = nil
-                
+
                 if other_joker_ret == true then
                     ---@diagnostic disable-next-line: return-type-mismatch
                     return other_joker_ret
@@ -270,15 +277,15 @@ if SPL.config.jokers then
         end,
     }
     -- Reverse Brainstorm (Mrotsniarb)
-    SMODS.Joker{
+    SMODS.Joker {
         discovered = true,
         unlocked = true,
-        key="mrotsniarb",
-        rarity="SPL_rareplus",
-        cost=5,
-        blueprint_compat=true,
-        atlas="mrotsniarb",
-        pos = {x=0,y=0},
+        key = "mrotsniarb",
+        rarity = "SPL_rareplus",
+        cost = 5,
+        blueprint_compat = true,
+        atlas = "mrotsniarb",
+        pos = { x = 0, y = 0 },
         update = function(self, card, front)
             if G.STAGE == G.STAGES.RUN then
                 for i = 1, #G.jokers.cards do
@@ -297,7 +304,15 @@ if SPL.config.jokers then
         end,
         loc_vars = function(self, info_queue, card)
             if card.area and card.area ~= G.jokers and SPL.config.show_tooltips then
-                info_queue[#info_queue+1] = {generate_ui = generate_tooltip, key = 'rareplus', set="rarity", colour = G.C.RARITY.rarePlus, hasBGColour = true, text_colour = G.C.WHITE}
+                info_queue[#info_queue + 1] = {
+                    generate_ui = generate_tooltip,
+                    key = 'rareplus',
+                    set = "rarity",
+                    colour =
+                        G.C.RARITY.rarePlus,
+                    hasBGColour = true,
+                    text_colour = G.C.WHITE
+                }
             end
             card.ability.blueprint_compat_ui = card.ability.blueprint_compat_ui
             card.ability.blueprint_compat_check = nil
@@ -336,7 +351,7 @@ if SPL.config.jokers then
                 } or nil,
             }
         end,
-        calculate = function(self,card,context)
+        calculate = function(self, card, context)
             local other_joker = nil
             for i = 1, #G.jokers.cards do
                 if G.jokers.cards[i] == card then
@@ -346,17 +361,17 @@ if SPL.config.jokers then
             if other_joker and other_joker ~= card then
                 context.blueprint = (context.blueprint and (context.blueprint + 1)) or 1
                 context.blueprint_card = context.blueprint_card or card
-                
+
                 if context.blueprint > #G.jokers.cards + 1 then
                     return
                 end
-                
+
                 local other_joker_ret, trig = other_joker:calculate_joker(context)
                 local eff_card = context.blueprint_card or card
-                
+
                 context.blueprint = nil
                 context.blueprint_card = nil
-                
+
                 if other_joker_ret == true then
                     ---@diagnostic disable-next-line: return-type-mismatch
                     return other_joker_ret
@@ -374,43 +389,55 @@ if SPL.config.jokers then
         end,
     }
     --Chutes and Ladders
-    SMODS.Joker{
+    SMODS.Joker {
         discovered = true,
         unlocked = true,
-        key="chutesandladders",
+        key = "chutesandladders",
         rarity = 2,
         cost = 5,
-        atlas="chutesandladders",
+        atlas = "chutesandladders",
         blueprint_compat = true,
-        pos = {x=0,y=0},
-        loc_vars = function(self,info_queue,card)
+        pos = { x = 0, y = 0 },
+        loc_vars = function(self, info_queue, card)
             if SPL.config.show_tooltips then
-                info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "Brodizzle",0.5 }}
+                info_queue[#info_queue + 1] = { key = 'SPL_ideaby', set = 'Other', vars = { "Brodizzle", 0.5 } }
             end
         end,
-        calculate = function(self,card,context)
+        calculate = function(self, card, context)
             if context.before and context.cardarea == G.jokers then
-                for i=1, #G.play.cards do
-                    G.E_MANAGER:add_event(Event({trigger="after",delay=0.3,func = function()
-                        local _card = G.play.cards[i]
-                        _card:flip()
-                        return true end
+                for i = 1, #G.play.cards do
+                    G.E_MANAGER:add_event(Event({
+                        trigger = "after",
+                        delay = 0.3,
+                        func = function()
+                            local _card = G.play.cards[i]
+                            _card:flip()
+                            return true
+                        end
                     }))
                     -- This took me forever to figure out. I finally did it! :Yippee:
-                    G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.3,func = function()
-                        local _card = G.play.cards[i]
-                        beforeNominal = _card.base.nominal
-                        local success, err = SMODS.modify_rank(_card, 1)
-                        assert(success, "Failed to change card rank: " .. (err or "unknown error"))
-                        afterNominal = _card.base.nominal
-                        _card:juice_up(0.5, 0.5)
-                        play_sound('tarot1')
-                        return true end 
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.3,
+                        func = function()
+                            local _card = G.play.cards[i]
+                            beforeNominal = _card.base.nominal
+                            local success, err = SMODS.modify_rank(_card, 1)
+                            assert(success, "Failed to change card rank: " .. (err or "unknown error"))
+                            afterNominal = _card.base.nominal
+                            _card:juice_up(0.5, 0.5)
+                            play_sound('tarot1')
+                            return true
+                        end
                     }))
-                    G.E_MANAGER:add_event(Event({trigger="after",delay=0.3,func = function()
-                        local _card = G.play.cards[i]
-                        _card:flip()
-                        return true end
+                    G.E_MANAGER:add_event(Event({
+                        trigger = "after",
+                        delay = 0.3,
+                        func = function()
+                            local _card = G.play.cards[i]
+                            _card:flip()
+                            return true
+                        end
                     }))
                 end
                 return {
@@ -419,20 +446,20 @@ if SPL.config.jokers then
             end
         end
     }
-    SMODS.Joker{
+    SMODS.Joker {
         discovered = true,
         unlocked = true,
-        key="watermelonreactor",
-        rarity="SPL_watermelon",
-        cost=0,
-        atlas="watermelonreactor",
-        pos={x=0,y=0},
+        key = "watermelonreactor",
+        rarity = "SPL_watermelon",
+        cost = 0,
+        atlas = "watermelonreactor",
+        pos = { x = 0, y = 0 },
         display_size = { w = 71, h = 71 },
-        pixel_size = {w=71,h=71},
-        loc_vars = function(self,info_queue,card)
+        pixel_size = { w = 71, h = 71 },
+        loc_vars = function(self, info_queue, card)
             if card.area and card.area ~= G.jokers and SPL.config.show_tooltips then
-                info_queue[#info_queue+1] = {key = 'SPL_watermelon_reactor_lore', set = 'Other'}
-                info_queue[#info_queue+1] = {key = 'SPL_watermelon_reactor_bot_link', set = 'Other'}
+                info_queue[#info_queue + 1] = { key = 'SPL_watermelon_reactor_lore', set = 'Other' }
+                info_queue[#info_queue + 1] = { key = 'SPL_watermelon_reactor_bot_link', set = 'Other' }
             end
             return {
                 vars = {
@@ -442,16 +469,23 @@ if SPL.config.jokers then
                 }
             }
         end,
-        calculate = function(self,card,context)
+        calculate = function(self, card, context)
             if context.joker_main then
                 G.E_MANAGER:add_event(Event({
                     func = (function()
                         local text = "🍉"
                         play_sound('gong', 0.94, 0.3)
-                        play_sound('gong', 0.94*1.5, 0.2)
+                        play_sound('gong', 0.94 * 1.5, 0.2)
                         play_sound('tarot1', 1.5)
                         attention_text({
-                            scale = 1.4, text = text, hold = 2, align = 'cm', offset = {x = 0,y = -2.7},major = G.play,font=SMODS.Fonts["SPL_emoji"]
+                            scale = 1.4,
+                            text = text,
+                            hold = 2,
+                            align = 'cm',
+                            offset = { x = 0, y = -2.7 },
+                            major = G
+                                .play,
+                            font = SMODS.Fonts["SPL_emoji"]
                         })
                         return true
                     end)
@@ -465,18 +499,18 @@ if SPL.config.jokers then
             end
         end
     }
-    
-    SMODS.Joker{
+
+    SMODS.Joker {
         discovered = true,
         unlocked = true,
-        key="ducky",
-        rarity=4, -- The Legendary Ducky is here!,
-        cost=10,
-        atlas="ducky",
+        key = "ducky",
+        rarity = 4, -- The Legendary Ducky is here!,
+        cost = 10,
+        atlas = "ducky",
         blueprint_compat = true,
-        pos = {x=0,y=0},
-        soul_pos = {x=1,y=0},
-        loc_vars = function(self,info_queue,card)
+        pos = { x = 0, y = 0 },
+        soul_pos = { x = 1, y = 0 },
+        loc_vars = function(self, info_queue, card)
             G.ARGS.LOC_COLOURS["Ducky"] = HEX("FFD800")
             return {
                 vars = {
@@ -486,10 +520,10 @@ if SPL.config.jokers then
                 }
             }
         end,
-        calculate = function(self,card,context)
+        calculate = function(self, card, context)
             if context.joker_main then
                 return {
-                    message= "h",
+                    message = "h",
                     colour = HEX("FFD800"),
                     x_chips = 200,
                     x_mult = 200,
@@ -498,60 +532,72 @@ if SPL.config.jokers then
         end
     }
     -- The joker that lets you touch Grass fr fr
-    SMODS.Joker{
+    SMODS.Joker {
         discovered = true,
         unlocked = true,
-        key="grass_joker",
-        rarity=1,
-        cost=3,
-        atlas="grass",
-        no_doe=true, -- i believe this is the right way to disable it from deck of equlibrium
-        pos={x=0,y=0},
-        loc_vars = function(self,info_queue,card)
+        key = "grass_joker",
+        rarity = 1,
+        cost = 3,
+        atlas = "grass",
+        no_doe = true, -- i believe this is the right way to disable it from deck of equlibrium
+        pos = { x = 0, y = 0 },
+        loc_vars = function(self, info_queue, card)
             -- yes the variables are not going to be used its fine
-            check_for_unlock({type="SPL_touch_grass"})
+            check_for_unlock({ type = "SPL_touch_grass" })
         end,
-        in_pool = function(self,args)
-            return false, {allow_duplicates = false}
+        in_pool = function(self, args)
+            return false, { allow_duplicates = false }
         end,
-        add_to_deck = function(self,card,from_debuff)
-            G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
-                card_eval_status_text(card, 'extra', nil, nil, nil, {message = "Was it just a dream?", colour = G.C.GREEN})
-                -- G.jokers:remove_card(card) -- dont.
-                card:start_dissolve()
-                -- card = nil
-                return true end
+        add_to_deck = function(self, card, from_debuff)
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    card_eval_status_text(card, 'extra', nil, nil, nil,
+                        { message = "Was it just a dream?", colour = G.C.GREEN })
+                    -- G.jokers:remove_card(card) -- dont.
+                    card:start_dissolve()
+                    -- card = nil
+                    return true
+                end
             }))
-            
         end
     }
     -- ^0.05 mult and chips for each card in deck, hand always counts as The Entire Deck and copies all played cards
     -- idea by jamirror
-    SMODS.Joker{
+    SMODS.Joker {
         discovered = true,
         unlocked = true,
-        key="trick_deck",
-        rarity="SPL_rareplusplus",
-        atlas="trick_deck",
+        key = "trick_deck",
+        rarity = "SPL_rareplusplus",
+        atlas = "trick_deck",
         blueprint_compat = true,
-        pos={x=0,y=0},
-        cost=104,
+        pos = { x = 0, y = 0 },
+        cost = 104,
         config = {
             extra = {
                 mult = 1,
             }
         },
-        loc_vars = function(self,info_queue,card)
+        loc_vars = function(self, info_queue, card)
             if SPL.config.show_tooltips then
-                info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "jamirror",0.5 }}
+                info_queue[#info_queue + 1] = { key = 'SPL_ideaby', set = 'Other', vars = { "jamirror", 0.5 } }
             end
             if card.area and card.area ~= G.jokers and SPL.config.show_tooltips then
-                info_queue[#info_queue+1] = {generate_ui = generate_tooltip, key = 'rareplusplus', set="rarity", colour = G.C.RARITY.rarePlusPlus, hasBGColour = true, text_colour = G.C.WHITE}
+                info_queue[#info_queue + 1] = {
+                    generate_ui = generate_tooltip,
+                    key = 'rareplusplus',
+                    set = "rarity",
+                    colour =
+                        G.C.RARITY.rarePlusPlus,
+                    hasBGColour = true,
+                    text_colour = G.C.WHITE
+                }
             end
             if G.playing_cards == nil then
-                card.ability.extra.mult = 0.05*52+1
+                card.ability.extra.mult = 0.05 * 52 + 1
             else
-                card.ability.extra.mult = 0.05*#G.playing_cards+1
+                card.ability.extra.mult = 0.05 * #G.playing_cards + 1
             end
             return {
                 vars = {
@@ -559,13 +605,13 @@ if SPL.config.jokers then
                 }
             }
         end,
-        add_to_deck = function(self,card,from_debuff)
+        add_to_deck = function(self, card, from_debuff)
             SparkLatro.alwaysCountTED = true
         end,
-        remove_from_deck = function(self,card,from_debuff)
+        remove_from_deck = function(self, card, from_debuff)
             SparkLatro.alwaysCountTED = false
         end,
-        calculate = function(self,card,context)
+        calculate = function(self, card, context)
             if context.joker_main then
                 return {
                     message = "The deck got tricky! (I guess?)",
@@ -589,11 +635,11 @@ if SPL.config.jokers then
         end
     }
     -- the one from the other collab guy, hurlemort i think
-    SMODS.Joker{
+    SMODS.Joker {
         discovered = true,
         unlocked = true,
         key = "peak",
-        config={ extra = { odds = 4 } },
+        config = { extra = { odds = 4 } },
         pos = { x = 0, y = 0 },
         soul_pos = { x = 1, y = 0 },
         rarity = 4,
@@ -603,10 +649,10 @@ if SPL.config.jokers then
         perishable_compat = true,
         effect = nil,
         atlas = 'peak_atlas',
-        pools = {["tao_joker_pool_legendary"] = true},
+        pools = { ["tao_joker_pool_legendary"] = true },
         loc_vars = function(self, info_queue, card)
             if SPL.config.show_tooltips then
-                info_queue[#info_queue+1] = {key = 'SPL_ideaby', set = 'Other', vars = { "Hurlemort",0.5 }}
+                info_queue[#info_queue + 1] = { key = 'SPL_ideaby', set = 'Other', vars = { "Hurlemort", 0.5 } }
             end
             if not card.edition or (card.edition and not card.edition.negative) then
                 info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
@@ -622,9 +668,9 @@ if SPL.config.jokers then
             else
                 card.ability.extra.odds = 1
             end
-            return { vars = {G.GAME.probabilities.normal, card.ability.extra.odds} }
+            return { vars = { G.GAME.probabilities.normal, card.ability.extra.odds } }
         end,
-        
+
         calculate = function(self, card, context)
             if (context.end_of_round and not context.repetition and not context.individual) and G.GAME.blind then
                 if pseudorandom("peak") < G.GAME.probabilities.normal / card.ability.extra.odds then
@@ -636,7 +682,7 @@ if SPL.config.jokers then
                             break
                         end
                     end
-                    
+
                     -- Get the joker to the right
                     local right_joker = self_index and G.jokers.cards[self_index + 1] or nil
                     if right_joker and right_joker ~= card then
@@ -657,4 +703,21 @@ if SPL.config.jokers then
             end
         end,
     }
-end              
+    SMODS.Joker {
+        key = "balala",
+        discovered = true,
+        unlocked = true,
+        rarity = 1,
+        atlas = "balala_atlas",
+        display_size = { w = 219, h = 52 },
+        -- pixel_size = { w = 219, h = 52 },
+        calculate = function(self, card, context)
+            if context.joker_main then
+                return {
+                    message = "balala",
+                    colour = G.C.RARITY.rarePlus,
+                }
+            end
+        end
+    }
+end

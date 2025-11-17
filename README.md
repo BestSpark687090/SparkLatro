@@ -1,9 +1,14 @@
 # SparkLatro
+
 A random Balatro mod I'm making.
+
 ## Please note this is still a WIP.
+
 I would love suggestions if possible :)
+
 ## Current Addition List:
-10 Jokers 
+
+10 Jokers
 
 2 Achievements
 
@@ -22,4 +27,3 @@ I would love suggestions if possible :)
 1 Poker Hand
 
 3 Spectral Cards
-

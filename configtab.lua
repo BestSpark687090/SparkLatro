@@ -5,7 +5,14 @@ settings.nodes[#settings.nodes + 1] = {
     n = G.UIT.R,
     config = { colour = G.C.RED, minw = 10, r = 0, minh = 0.75, align = "cm" },
     nodes = {
-        { n = G.UIT.T, config = { text = "SparkLatro Config", scale = "0.5", colour = G.C.WHITE, juice = true, align = "cm" } },
+        { n = G.UIT.T, config = { text = "SparkLatro Config", scale = 0.5, colour = G.C.WHITE, juice = true, align = "cm" } },
+    }
+}
+settings.nodes[#settings.nodes + 1] = {
+    n = G.UIT.R,
+    config = { colour = G.C.RARITY.rarePlusPlus, minw = 7, r = 0, minh = 0.35, align = "cm" },
+    nodes = {
+        { n = G.UIT.T, config = { text = "For game config, check the Game Stuff tab.", scale = 0.3, colour = G.C.WHITE, juice = true, align = "cm" } },
     }
 }
 -- im gonna make label scaling gimme a min :P
@@ -25,13 +32,7 @@ settings.nodes[#settings.nodes + 1] = {
         }),
     }
 }
-settings.nodes[#settings.nodes + 1] = {
-    n = G.UIT.R,
-    config = { minw = 10, r = 0, minh = 0.25, align = "cm" },
-    nodes = {
-        { n = G.UIT.T, config = { text = "For game config, check the Game Stuff tab.", scale = 0.3, colour = G.C.WHITE, juice = true, align = "cm" } },
-    }
-}
+
 config = { n = G.UIT.R, config = { align = "tm", padding = 0 }, nodes = { settings } }
 nodes[#nodes + 1] = config
 return {

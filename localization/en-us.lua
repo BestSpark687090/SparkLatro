@@ -121,7 +121,7 @@ return {
                 name = "{V:1,E:1}Ducky{}",
                 text = {
                     "It's the Ducky!!",
-                    "{s:0.3}x200 mult and chips, I guess?{}"
+                    "{s:0.4}x200 mult and chips, I guess?{}"
                 }
             },
             j_SPL_grass_joker = {
@@ -148,6 +148,12 @@ return {
                     "at the end of the round",
                     "{C:inactive}({}{C:green}Probability{} {C:inactive}decreases for each{}",
                     "{C:inactive}non-negative Joker owned){}",
+                }
+            },
+            j_SPL_balala = {
+                name = "Balala",
+                text = {
+                    "balala"
                 }
             }
         },

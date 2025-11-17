@@ -1,7 +1,7 @@
 G.GAME = {}
 G.GAME.SkullUsed = false
 SMODS.Tag {
-    key = "skull",
+    key = "skull_tag",
     atlas = "skull",
     pos = { x = 0, y = 0 },
     loc_txt = {

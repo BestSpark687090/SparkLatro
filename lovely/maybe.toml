@@ -5,35 +5,35 @@ priority = -1
 [[patches]]
 # Stretches the Balatro Logo. Why? Because i can.
 [patches.pattern]
-target="game.lua"
-pattern="13*SC_scale,"
-match_indent=true
-position="at"
-payload="20*SC_scale,"
+target = "game.lua"
+pattern = "13*SC_scale,"
+match_indent = true
+position = "at"
+payload = "20*SC_scale,"
 # I CANT BELIEVE THIS ACTUALLY WORKED
 # This modifies the tooltip section to add the seals in. Let's GOOOOOOO
 [[patches]]
 [patches.pattern]
-target="functions/misc_functions.lua"
-pattern='detailed_tooltip = part.control.T and (G.P_CENTERS[part.control.T] or G.P_TAGS[part.control.T]) or nil,'
-match_indent=true
-position="at"
-payload="detailed_tooltip = part.control.T and (G.P_CENTERS[part.control.T] or G.P_TAGS[part.control.T] or G.P_SEALS[part.control.T]) or nil,"
+target = "functions/misc_functions.lua"
+pattern = 'detailed_tooltip = part.control.T and (G.P_CENTERS[part.control.T] or G.P_TAGS[part.control.T]) or nil,'
+match_indent = true
+position = "at"
+payload = "detailed_tooltip = part.control.T and (G.P_CENTERS[part.control.T] or G.P_TAGS[part.control.T] or G.P_SEALS[part.control.T]) or nil,"
 # create_toggle info Label scaling. It's stuck at 0.25 and i dont like that :(
 [[patches]]
 [patches.pattern]
-target="functions/UI_definitions.lua"
-pattern="args.ref_value = args.ref_value or 'test'"
-match_indent=true
-position="after"
-payload="args.info_scale = args.info_scale or 0.25"
+target = "functions/UI_definitions.lua"
+pattern = "args.ref_value = args.ref_value or 'test'"
+match_indent = true
+position = "after"
+payload = "args.info_scale = args.info_scale or 0.25"
 [[patches]]
 [patches.pattern]
-target="functions/UI_definitions.lua"
-pattern="{n=G.UIT.T, config={text = v, scale = 0.25, colour = G.C.UI.TEXT_LIGHT}}"
-match_indent=true
-position="at"
-payload="{n=G.UIT.T, config={text = v, scale = args.info_scale, colour = G.C.UI.TEXT_LIGHT}}" 
+target = "functions/UI_definitions.lua"
+pattern = "{n=G.UIT.T, config={text = v, scale = 0.25, colour = G.C.UI.TEXT_LIGHT}}"
+match_indent = true
+position = "at"
+payload = "{n=G.UIT.T, config={text = v, scale = args.info_scale, colour = G.C.UI.TEXT_LIGHT}}"
 #... this worked first try again.
 # i have no clue how i'm doing this but i am!
 # im talking about above part jsyk :P
@@ -41,9 +41,9 @@ payload="{n=G.UIT.T, config={text = v, scale = args.info_scale, colour = G.C.UI.
 [patches.pattern]
 target = '=[SMODS Cryptid "items/enhanced.lua"]'
 pattern = "local sl_deck = {"
-match_indent=true
-position="before"
-payload='''
+match_indent = true
+position = "before"
+payload = '''
 print("[SparkLatro] Injected into Cryptid!")
 Cryptid.edeck_sprites.seal.SPL_ducky_seal = {atlas="SPL_sealspectrals", pos = {x=0,y=0}}
 Cryptid.edeck_sprites.seal.SPL_spark_seal = {atlas="SPL_sealspectrals", pos = {x=0,y=1}}
@@ -65,7 +65,7 @@ end,
 [[patches]]
 [patches.pattern]
 target = "functions/UI_definitions.lua"
-pattern="{n=G.UIT.O, config={draw_layer = 1, object = DynaText({scale = args.scale, string = args.text, maxw = args.maxw, colours = {args.colour},float = true, shadow = true, silent = not args.noisy, args.scale, pop_in = 0, pop_in_rate = 6, rotate = args.rotate or nil})}},"
-match_indent=true
-position="at"
-payload="{n=G.UIT.O, config={draw_layer = 1, object = DynaText({scale = args.scale, string = args.text, maxw = args.maxw, colours = {args.colour},float = true, shadow = true, silent = not args.noisy, args.scale, pop_in = 0, pop_in_rate = 6, rotate = args.rotate or nil, font = args.font or nil})}},"
+pattern = "{n=G.UIT.O, config={draw_layer = 1, object = DynaText({scale = args.scale, string = args.text, maxw = args.maxw, colours = {args.colour},float = true, shadow = true, silent = not args.noisy, args.scale, pop_in = 0, pop_in_rate = 6, rotate = args.rotate or nil})}},"
+match_indent = true
+position = "at"
+payload = "{n=G.UIT.O, config={draw_layer = 1, object = DynaText({scale = args.scale, string = args.text, maxw = args.maxw, colours = {args.colour},float = true, shadow = true, silent = not args.noisy, args.scale, pop_in = 0, pop_in_rate = 6, rotate = args.rotate or nil, font = args.font or nil})}},"

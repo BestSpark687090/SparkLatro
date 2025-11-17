@@ -15,16 +15,9 @@ SparkLatro.returnAMenu = function(menu_name)
       }
       settings.nodes[#settings.nodes + 1] = {
          n = G.UIT.R,
-         config = { minw = 0, r = 0, minh = 0.25, align = "cm" },
+         config = { minw = 0, r = 0, colour = G.C.RARITY.rarePlusPlus, minh = 0.38, align = "cm" },
          nodes = {
-            { n = G.UIT.T, config = { text = "For if you actually want", scale = 0.4, colour = G.C.WHITE, juice = true, align = "tm" } },
-         }
-      }
-      settings.nodes[#settings.nodes + 1] = {
-         n = G.UIT.R,
-         config = { minw = 0, r = 0, minh = 0.25, align = "cm" },
-         nodes = {
-            { n = G.UIT.T, config = { text = "to modify this stuff. Why though?", scale = 0.4, colour = G.C.WHITE, juice = true, align = "tm" } }
+            { n = G.UIT.T, config = { text = "For if you actually want to modify this stuff. Why though?", scale = 0.3, colour = G.C.WHITE, juice = true, align = "tm" } },
          }
       }
       -- {n=G.UIT.R,config={minw=10,r=0,minh=0.25,align="tm"}}, -- break in line because yes
@@ -106,4 +99,5 @@ SparkLatro.returnAMenu = function(menu_name)
       nodes = nodes,
    }
 end
+--TODO: remember to put this back to a function (remove the parentheses)
 return SparkLatro.returnAMenu
