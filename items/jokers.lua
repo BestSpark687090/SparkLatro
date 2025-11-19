@@ -576,6 +576,7 @@ if SPL.config.jokers then
         cost = 104,
         config = {
             extra = {
+                emult = 0.05
                 mult = 1,
             }
         },
@@ -595,9 +596,9 @@ if SPL.config.jokers then
                 }
             end
             if G.playing_cards == nil then
-                card.ability.extra.mult = 0.05 * 52 + 1
+                card.ability.extra.mult = card.ability.extra.emult * 52 + 1
             else
-                card.ability.extra.mult = 0.05 * #G.playing_cards + 1
+                card.ability.extra.mult = card.ability.extra.emult * #G.playing_cards + 1
             end
             return {
                 vars = {
@@ -657,7 +658,7 @@ if SPL.config.jokers then
             if not card.edition or (card.edition and not card.edition.negative) then
                 info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
             end
-            local count = 0
+            local count = 4
             if G.jokers and G.jokers.card then
                 for i, v in ipairs(G.jokers.cards) do
                     if not v.edition or (not v.edition.negative) then
@@ -702,22 +703,5 @@ if SPL.config.jokers then
                 end
             end
         end,
-    }
-    SMODS.Joker {
-        key = "balala",
-        discovered = true,
-        unlocked = true,
-        rarity = 1,
-        atlas = "balala_atlas",
-        display_size = { w = 219, h = 52 },
-        -- pixel_size = { w = 219, h = 52 },
-        calculate = function(self, card, context)
-            if context.joker_main then
-                return {
-                    message = "balala",
-                    colour = G.C.RARITY.rarePlus,
-                }
-            end
-        end
     }
 end

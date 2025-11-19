@@ -7,10 +7,12 @@ return {
             k_spl_watermelon = "Watermelon",
             k_spl_hand_entire_deck = "The Entire Deck",
             k_upgradable = "Upgradable",
+            b_randoms_cards = "Random Cards",
+            k_randoms = "Randoms",
         },
         labels = {
             spl_spark_seal_seal = "Spark Seal",
-            spl_ducky_seal_seal = "Ducky Seal"
+            spl_ducky_seal_seal = "Ducky Seal",
         },
         achievement_names = {
             ach_SPL_touch_grass = "Touch Grass"
@@ -191,6 +193,14 @@ return {
                     "Upgrade the selected card to a {C:attention}higher rarity",
                     "{C:inactive}(if it has one)",
                     "{s:1.2}(Rare -> Rare+ -> Rare++)"
+                }
+            }
+        },
+        randoms = {
+            c_SPL_balala = {
+                name = "balala",
+                text = {
+                    "balala"
                 }
             }
         },
