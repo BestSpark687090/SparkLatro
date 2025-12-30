@@ -576,7 +576,7 @@ if SPL.config.jokers then
         cost = 104,
         config = {
             extra = {
-                emult = 0.05
+                emult = 0.05,
                 mult = 1,
             }
         },

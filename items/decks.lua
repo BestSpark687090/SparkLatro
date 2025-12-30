@@ -33,6 +33,9 @@ if SPL.config.decks then
         name = "Absolute Cinema",
         key = "cinema",
         atlas = "cinema_atlas",
+        -- loc_vars = function()
+        --     info_queue[#info_queue+1] = {}
+        -- end
         apply = function(self)
             G.E_MANAGER:add_event(Event({
                 func = function()

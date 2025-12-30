@@ -28,7 +28,8 @@ settings.nodes[#settings.nodes + 1] = {
             ref_value = 'keybinds',
             callback = SPL.save_config(),
             info = { "S: funny sound", "CTRL+Shift+R: Restart game" },
-            info_scale = 0.35
+            info_scale = 0.35,
+            id="spl_uhhhh"
         }),
     }
 }

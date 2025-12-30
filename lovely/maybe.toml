@@ -69,3 +69,11 @@ pattern = "{n=G.UIT.O, config={draw_layer = 1, object = DynaText({scale = args.s
 match_indent = true
 position = "at"
 payload = "{n=G.UIT.O, config={draw_layer = 1, object = DynaText({scale = args.scale, string = args.text, maxw = args.maxw, colours = {args.colour},float = true, shadow = true, silent = not args.noisy, args.scale, pop_in = 0, pop_in_rate = 6, rotate = args.rotate or nil, font = args.font or nil})}},"
+# adds an id argument to the toggle
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = "button = 'toggle_button', button_dist = 0.2, hover = true, toggle_callback = args.callback, func = 'toggle', focus_args = {funnel_to = true}}, nodes={"
+match_indent = true
+position = "at"
+payload = "button = 'toggle_button', button_dist = 0.2, hover = true, toggle_callback = args.callback, func = 'toggle', focus_args = {funnel_to = true}}, id = args.id or nil, nodes={"
