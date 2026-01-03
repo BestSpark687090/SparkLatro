@@ -156,4 +156,6 @@ if SPL.config.consumables then
 			value = nil
 		end
 	}
+	-- TODO: Add Downgrade spectral
+	-- TODO: Maybe keep stickers on upgrade/downgrade?
 end
