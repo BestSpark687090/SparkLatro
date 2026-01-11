@@ -323,6 +323,14 @@ return {
                     "Chips = Blind scaling of Ante Number^2",
                     "Idea by The Waal"
                 }
+            },
+            bl_SPL_super_low_quality = {
+                name = "Super Low Quality",
+                text = {
+                    "Quality of game decreases by formula",
+                    "[insert formula here]",
+                    "every second "
+                }
             }
         },
         Stake = {

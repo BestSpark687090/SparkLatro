@@ -67,4 +67,24 @@ if SPL.config.blinds then
             hardcore = true,
         }
     }
+    -- Super Low Quality: Every [idk] seconds, quality drops by
+    SMODS.Blind{
+        key="super_low_quality",
+        atlas="super_low_qual_atlas",
+        pos = {y=0},
+        boss_colour = G.C.RED,
+        mult = 3,
+        set_blind = function (self)
+            G.GAME.SPL_low_qual_countdown = 1 -- dont worry that isnt in seconds
+        end,
+        defeat = function() G.FUNCS.SPL_resize(1) end,
+        disable = function() G.FUNCS.SPL_resize(1) end,
+        in_pool = function(self)
+            return true
+        end,
+        boss = {
+            showdown = false,
+            hardcore = false,
+        }
+    }
 end

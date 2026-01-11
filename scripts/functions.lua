@@ -64,3 +64,40 @@ function info_tip_from_rows(desc_nodes, name)
 		return itfr(desc_nodes, name)
 	end
 end
+
+function G.FUNCS.SPL_resize(val)
+	G.CANV_SCALE = val
+	local width, height = love.graphics.getDimensions()
+	love.resize(width, height) -- Force a resize calculation
+end
+
+local update_ref = Game.update
+local dt_counter = 0
+local ticks = 0
+local at_normal = true
+function Game:update(dt)
+	update_ref(self,dt)
+	if G.GAME.SPL_low_qual_ticks == nil then G.GAME.SPL_low_qual_ticks = 0 end
+	if G.GAME.blind and not G.GAME.blind.disabled then
+		if G.GAME.blind.name == "bl_SPL_super_low_quality" then
+			
+			dt_counter = dt_counter + dt
+			while (dt_counter >= 0.010) do
+				ticks = ticks + 1
+				dt_counter = dt_counter - 0.010
+				if math.fmod(ticks,60) == 0 then
+					at_normal = false
+					G.GAME.SPL_low_qual_ticks = G.GAME.SPL_low_qual_ticks + 1
+					local formula = (-0.02*G.GAME.SPL_low_qual_ticks)+1
+					if formula <= 0 then
+						formula = 0.01
+					end
+					G.FUNCS.SPL_resize(formula)
+				end
+			end
+		end
+	elseif not at_normal then
+		at_normal = true
+		G.FUNCS.SPL_resize(1)
+	end
+end

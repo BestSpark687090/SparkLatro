@@ -131,6 +131,14 @@ SMODS.Atlas {
     atlas_table = 'ANIMATION_ATLAS',
     py = 34,
 }
+SMODS.Atlas {
+    key = "super_low_qual_atlas",
+    path = "low_qual.png",
+    frames = 21,
+    px = 34,
+    atlas_table = 'ANIMATION_ATLAS',
+    py = 34,
+}
 --#endregion Blind Atlases
 --#region Seal Atlases
 SMODS.Atlas {

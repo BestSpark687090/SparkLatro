@@ -77,3 +77,25 @@ pattern = "button = 'toggle_button', button_dist = 0.2, hover = true, toggle_cal
 match_indent = true
 position = "at"
 payload = "button = 'toggle_button', button_dist = 0.2, hover = true, toggle_callback = args.callback, func = 'toggle', focus_args = {funnel_to = true}}, id = args.id or nil, nodes={"
+#low quality boss blind: keep canvas scale as is when resizing (from potatro i guess)
+[[patches]]
+[patches.pattern]
+target = 'main.lua'
+pattern = "G.CANV_SCALE = 1"
+match_indent = true
+position = "at"
+payload = """if not G.CANV_SCALE then
+G.CANV_SCALE = 1
+end
+"""
+# low quality boss blind: draw canvas properly i guess (from potatro)
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = "love.graphics.draw(self.CANVAS, 0, 0)"
+position = "at"
+match_indent = true
+payload = """
+self.CANVAS:setFilter("nearest", "nearest")
+love.graphics.draw(self.CANVAS, 0, 0, 0, (G.CANV_SCALE and (1 / G.CANV_SCALE)) or 1, (G.CANV_SCALE and (1 / G.CANV_SCALE)) or 1)
+"""
