@@ -19,6 +19,14 @@ pattern = 'detailed_tooltip = part.control.T and (G.P_CENTERS[part.control.T] or
 match_indent = true
 position = "at"
 payload = "detailed_tooltip = part.control.T and (G.P_CENTERS[part.control.T] or G.P_TAGS[part.control.T] or G.P_SEALS[part.control.T]) or nil,"
+# New to SMODS: Also create tooltips for seals, because it uses Galdur's run select screen now.
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils/run_select.lua"]'
+pattern = 'info_queue[#info_queue+1] = G.P_CENTERS[part.control.T] or G.P_TAGS[part.control.T] or {'
+match_indent = true
+position = "at"
+payload = "info_queue[#info_queue+1] = G.P_CENTERS[part.control.T] or G.P_TAGS[part.control.T] or G.P_SEALS[part.control.T] or {"
 # create_toggle info Label scaling. It's stuck at 0.25 and i dont like that :(
 [[patches]]
 [patches.pattern]
